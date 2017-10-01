@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using tyre_calculator.Model;
 using System.Xml.Linq;
 
-namespace tire_calculator
+namespace TyreCalculator
 {
     public partial class MainForm : Form
     {
@@ -51,11 +51,14 @@ namespace tire_calculator
             }
 
             xDocModelDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
+            IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
+                                   select brands;
+
             // Разобрать класс XNodeDocumentOrderComparer сортировка по бренду
-            foreach (XElement modelElement in xDocModelDic.Element("brands").Elements("brand"))
+            foreach (XElement modelElement in brand)
             {
-                XAttribute nameAttribute = modelElement.Attribute("name");
-                brandComboBox.Items.Add(nameAttribute.Value);
+                //XAttribute nameAttribute = modelElement.Attribute("name");
+                brandComboBox.Items.Add(modelElement.Attribute("name").Value);
             }
 
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
@@ -301,9 +304,12 @@ namespace tire_calculator
                            where year.Attribute("year").Value == yearComboBox.Text
                            select year;
 
+            List<string> values = new List<string>();
+
             foreach (XElement elem in infobrand)
             {
-                listView2.Items[0].SubItems[0].Text = elem.Attribute("name").Value;
+                values.Add(elem.Attribute("name").Value);
+                //listView2.Items[0].SubItems[0].Text = elem.Attribute("name").Value;
                 //textBox1.AppendText(elem.Element("model").Attribute("nick").Value + " ");
                 //textBox1.AppendText(elem.Element("model").Element("prod_year").Attribute("year").Value + " ");
                 //textBox1.AppendText(elem.Element("model").Element("prod_year").Element("engine").Value + " ");
@@ -311,17 +317,22 @@ namespace tire_calculator
             }
             foreach (XElement elem in infomodel)
             {
-                listView2.Items[0].SubItems[1].Text = elem.Attribute("nick").Value;
+                values.Add(elem.Attribute("nick").Value);
+                //listView2.Items[0].SubItems[1].Text = elem.Attribute("nick").Value;
             }
             foreach (XElement elem in infoyear)
             {
-                listView2.Items[0].SubItems[2].Text = elem.Attribute("year").Value;
-                listView2.Items[0].SubItems[3].Text = elem.Element("engine").Value;
+                values.Add(elem.Attribute("year").Value);
+                values.Add(elem.Element("engine").Value);
+                //listView2.Items[0].SubItems[2].Text = elem.Attribute("year").Value;
+                //listView2.Items[0].SubItems[3].Text = elem.Element("engine").Value;
                 foreach (XElement elem2 in elem.Elements("tyre_sizes"))
                 {
-                    listView2.Items[0].SubItems.Add(elem2.Value);
+                    values.Add(elem2.Value);
+                    //listView2.Items[0].SubItems.Add(elem2.Value);
                 }
             }
+            listView2.Items.Add(new ListViewItem(values.ToArray()));
         }
 
         private void clearButton_Click(object sender, EventArgs e)

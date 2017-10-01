@@ -31,4 +31,12 @@
       </prod_year>
     </model>
   </brand>
+  <brand name="KIA">
+    <model nick="Rio">
+      <prod_year year="2012—2017">
+        <engine>1,4</engine>
+        <tyre_sizes>185/65/15</tyre_sizes>
+      </prod_year>
+    </model>
+  </brand>
 </brands>
