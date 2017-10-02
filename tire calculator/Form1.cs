@@ -20,7 +20,7 @@ namespace TyreCalculator
             /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
-            xDocWidthDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
+            xDocWidthDic = XDocument.Load("D:\\Repos\\tire-calculator\\widthDic.xml");
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
                          select widths;
             foreach (XElement widthElemen in orderedWidth)
@@ -29,7 +29,7 @@ namespace TyreCalculator
                 newWidthComboBox.Items.Add(widthElemen.Value);
             }
 
-            xDocProfileDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
+            xDocProfileDic = XDocument.Load("D:\\Repos\\tire-calculator\\profileDic.xml");
             var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
                                select profiles;
             foreach (XElement profileElement in orderedProfile)
@@ -38,7 +38,7 @@ namespace TyreCalculator
                 newProfileComboBox.Items.Add(profileElement.Value);
             }
 
-            xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            xWheelSizeDic = XDocument.Load("D:\\Repos\\tire-calculator\\wheelSizeDic.xml");
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
                                    select wheelSizes;
             foreach (XElement wheelElement in orderedWheelSize)
@@ -47,7 +47,7 @@ namespace TyreCalculator
                 newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
-            xDocModelDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
+            xDocModelDic = XDocument.Load("D:\\Repos\\tire-calculator\\byModelDic.xml");
             IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
                                    select brands;
 

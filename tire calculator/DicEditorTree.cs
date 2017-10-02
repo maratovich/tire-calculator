@@ -19,20 +19,9 @@ namespace TyreCalculator
         public DicEditorTree()
         {
             InitializeComponent();
-
-            //openFileBtn = new Button() { Text = "open", Width = 50, Height = 20 };
-            //openFileBtn.Click += openFileBtn_Click;
-            //Controls.Add(openFileBtn);
-
-            //treeView = new TreeView()
-            //{
-            //    Location = new Point(0, openFileBtn.Bottom + 5),
-            //    Width = this.Width,
-            //    Height = this.Height - openFileBtn.Bottom + 5
-            //};
-            //Controls.Add(treeView);
         }
 
+        XDocument doc;
         void openFileBtn_Click(object sender, EventArgs e)
         {
             string fileName;
@@ -43,12 +32,38 @@ namespace TyreCalculator
             {
                 fileName = open.FileName;
 
-                XDocument doc = XDocument.Load(fileName);
-
+                doc = XDocument.Load(fileName);
+                foreach (XElement brand in doc.Root.Elements())
+                {
+                    TreeNode brandNode = new TreeNode(brand.Attribute("name").Value.ToString());
+                    treeView1.Nodes.Add(brandNode);
+                    foreach (XElement model in brand.Elements("model"))
+                    {
+                        TreeNode modelNode = new TreeNode(model.Attribute("nick").Value.ToString());
+                        brandNode.Nodes.Add(modelNode);
+                        foreach (XElement prod_year in model.Elements("prod_year"))
+                        {
+                            TreeNode YearNode = new TreeNode(prod_year.Attribute("year").Value.ToString());
+                            modelNode.Nodes.Add(YearNode);
+                            foreach (XElement prodYearElements in prod_year.Elements())
+                            {
+                                string value = prodYearElements.Value.ToString();
+                                if (prodYearElements.Name.ToString().Equals("engine"))
+                                {
+                                    value += " двигатель";
+                                }
+                                TreeNode YearElemsNode = new TreeNode(value);
+                                YearNode.Nodes.Add(YearElemsNode);
+                            }
+                        }
+                    }
+                }
+                /*
                 TreeNode root = new TreeNode(doc.Root.Name.ToString());
                 treeView1.Nodes.Add(root);
 
                 ReadNode(doc.Root, root);
+                */
             }
         }
 
@@ -56,7 +71,7 @@ namespace TyreCalculator
         {
             foreach (XElement element in xElement.Elements())
             {
-                TreeNode node = new TreeNode(element.Value.ToString());
+                TreeNode node = new TreeNode(element.Attribute("name").Value.ToString());
                 treeNode.Nodes.Add(node);
 
                 if (element.HasAttributes)
@@ -66,7 +81,7 @@ namespace TyreCalculator
                     node.Nodes.Add(attributesNode);
                 }
 
-                ReadNode(element, node);
+                //ReadNode(element, node);
             }
         }
 
@@ -77,6 +92,13 @@ namespace TyreCalculator
                 TreeNode node = new TreeNode(attribute.ToString());
                 treeNode.Nodes.Add(node);
             }
+        }
+
+        private void brandComboBoxEd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var brands = from xbrand in doc.Root.Elements("brand")
+            //             where xbrand.Attribute("name").Value == treeView1.SelectedNode
+            //             select xbrand;
         }
     }
 }
