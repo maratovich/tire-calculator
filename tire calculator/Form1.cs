@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using tire_calculator.Class;
 
 namespace tire_calculator
 {
@@ -32,6 +33,23 @@ namespace tire_calculator
                 wheelSizeComboBox.Items.Add(i);
                 newWheelSizeComboBox.Items.Add(i);
             }
+            string[] lstheaders = { "Диаметр", "Ширина", "Длина окружности", "Высота профиля", "Оборотов на км", "Изменение клиренса" };
+            for (int i = 0; i < lstheaders.Length; i++)
+            {
+                listView1.Items.Add(lstheaders[i]);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TyreParams tyre1 = new TyreParams(Convert.ToInt32(widthComboBox.SelectedItem), 
+                Convert.ToInt32(profileComboBox.SelectedItem), Convert.ToInt32(wheelSizeComboBox.SelectedItem));
+            listView1.Items[0].SubItems.Add(Convert.ToString(tyre1.TyreDiametr() ) );
+            listView1.Items[1].SubItems.Add(string.Concat(widthComboBox.SelectedItem, " мм" ));
+            listView1.Items[2].SubItems.Add(Convert.ToString(tyre1.CircleLenght() ) );
+            listView1.Items[3].SubItems.Add(Convert.ToString(tyre1.SideWall() ) );
+            listView1.Items[4].SubItems.Add(Convert.ToString(tyre1.RevsPerKm() ) );
+            
         }
     }
 }
