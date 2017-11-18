@@ -45,8 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\DrawHalfCircle.cs" />
-    <Compile Include="Class\TyreParams.cs" />
+    <Compile Include="Model\DrawHalfCircle.cs" />
+    <Compile Include="Model\TyreParams.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

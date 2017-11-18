@@ -16,6 +16,7 @@ namespace tire_calculator
         public MainForm()
         {
             InitializeComponent();
+            
             //Заполняем все 6-ть полей ComboBox данными: ширина профиля, высота и посадочный диаметр
             //В последеющем заполнять данные из XML файла.
             for (int i = 115; i < 365; i += 10)
@@ -33,53 +34,46 @@ namespace tire_calculator
                 wheelSizeComboBox.Items.Add(i);
                 newWheelSizeComboBox.Items.Add(i);
             }
-            string[] lstelem = { "Диаметр", "Ширина", "Длина окружности", "Высота профиля", "Оборотов на км", "Изменение клиренса" };
-            for (int i = 0; i < lstelem.Length; i++)
-            {
-                listView1.Items.Add(lstelem[i]);
-            }
-            string[] lstheaders = { "Показатель", "Старая размерность", "Новая размерность", "Разница" };
-            for (int i = 0; i < lstheaders.Length; i++)
-            {
-                listView1.Columns.Add(lstheaders[i]);
-            }
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
-
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            TyreParams tyre1 = new TyreParams(Convert.ToInt32(widthComboBox.SelectedItem), 
-                Convert.ToInt32(profileComboBox.SelectedItem), Convert.ToInt32(wheelSizeComboBox.SelectedItem) );
-            listView1.Items[0].SubItems.Add(string.Concat(Convert.ToString(tyre1.TyreDiametr()), " мм") );
-            listView1.Items[1].SubItems.Add(string.Concat(widthComboBox.SelectedItem, " мм" ));
-            listView1.Items[2].SubItems.Add(string.Concat(Convert.ToString(Math.Round(tyre1.CircleLenght() )), " мм") );
-            listView1.Items[3].SubItems.Add(string.Concat(Convert.ToString(tyre1.SideWall() )," мм" ) );
-            listView1.Items[4].SubItems.Add(Convert.ToString(Math.Round(tyre1.RevsPerKm()) ) );
-            //!!!
-            if (newWidthComboBox.SelectedIndex != -1 && newProfileComboBox.SelectedIndex != -1 && newWheelSizeComboBox.SelectedIndex != -1)
-            {
-                TyreParams tyre2 = new TyreParams(Convert.ToInt32(newWidthComboBox.SelectedItem),
-                Convert.ToInt32(newProfileComboBox.SelectedItem), Convert.ToInt32(newWheelSizeComboBox.SelectedItem));
-                listView1.Items[0].SubItems.Add(string.Concat(Convert.ToString(tyre2.TyreDiametr()), " мм"));
-                listView1.Items[1].SubItems.Add(string.Concat(newWidthComboBox.SelectedItem, " мм"));
-                listView1.Items[2].SubItems.Add(string.Concat(Convert.ToString(Math.Round(tyre2.CircleLenght())), " мм"));
-                listView1.Items[3].SubItems.Add(string.Concat(Convert.ToString(tyre2.SideWall()), " мм"));
-                listView1.Items[4].SubItems.Add(Convert.ToString(Math.Round(tyre2.RevsPerKm())));
-            }
-            
-        }
-
+        //Отработка события изменения значения ComboBox
         private void CmbBox_Change(object sender, EventArgs e)
         {
-            ComboBox cmbbx = (ComboBox)sender;
             TyreParams tyre1 = new TyreParams(Convert.ToInt32(widthComboBox.SelectedItem),
                 Convert.ToInt32(profileComboBox.SelectedItem), Convert.ToInt32(wheelSizeComboBox.SelectedItem));
-            listView1.Items[0].SubItems.Add(string.Concat(Convert.ToString(tyre1.TyreDiametr()), " мм"));
-            listView1.Items[1].SubItems.Add(string.Concat(widthComboBox.SelectedItem, " мм"));
-            listView1.Items[2].SubItems.Add(string.Concat(Convert.ToString(Math.Round(tyre1.CircleLenght())), " мм"));
-            listView1.Items[3].SubItems.Add(string.Concat(Convert.ToString(tyre1.SideWall()), " мм"));
-            listView1.Items[4].SubItems.Add(Convert.ToString(Math.Round(tyre1.RevsPerKm())));
+            if (widthComboBox.SelectedIndex != -1 && profileComboBox.SelectedIndex != -1 && wheelSizeComboBox.SelectedIndex != -1)
+            {
+                listView1.Items[0].SubItems[1].Text = string.Concat(Convert.ToString(tyre1.TyreDiametr()), " мм");
+                listView1.Items[1].SubItems[1].Text = string.Concat(widthComboBox.SelectedItem, " мм");
+                listView1.Items[2].SubItems[1].Text = string.Concat(Convert.ToString(Math.Round(tyre1.CircleLenght())), " мм");
+                listView1.Items[3].SubItems[1].Text = string.Concat(Convert.ToString(tyre1.SideWall()), " мм");
+                listView1.Items[4].SubItems[1].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm()));
+            }
+            TyreParams tyre2 = new TyreParams(Convert.ToInt32(newWidthComboBox.SelectedItem),
+                Convert.ToInt32(newProfileComboBox.SelectedItem), Convert.ToInt32(newWheelSizeComboBox.SelectedItem));
+            if (newWidthComboBox.SelectedIndex != -1 && newProfileComboBox.SelectedIndex != -1 && newWheelSizeComboBox.SelectedIndex != -1)
+            {
+                listView1.Items[0].SubItems[2].Text = string.Concat(Convert.ToString(tyre2.TyreDiametr()), " мм");
+                listView1.Items[1].SubItems[2].Text = string.Concat(newWidthComboBox.SelectedItem, " мм");
+                listView1.Items[2].SubItems[2].Text = string.Concat(Convert.ToString(Math.Round(tyre2.CircleLenght())), " мм");
+                listView1.Items[3].SubItems[2].Text = string.Concat(Convert.ToString(tyre2.SideWall()), " мм");
+                listView1.Items[4].SubItems[2].Text = Convert.ToString(Math.Round(tyre2.RevsPerKm()));
+            }
+            if (widthComboBox.SelectedIndex != -1 && profileComboBox.SelectedIndex != -1 && wheelSizeComboBox.SelectedIndex != -1 && newWidthComboBox.SelectedIndex != -1 && newProfileComboBox.SelectedIndex != -1 && newWheelSizeComboBox.SelectedIndex != -1)
+            {
+                listView1.Items[0].SubItems[3].Text = Convert.ToString(tyre1.TyreDiametr() - tyre2.TyreDiametr());
+                listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre1.TyreWidth - tyre2.TyreWidth);
+                listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.CircleLenght() - tyre2.CircleLenght()));
+                listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre1.SideWall() - tyre2.SideWall());
+                listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
+            }
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            //e.Graphics.DrawArc(new Pen(Brushes.Red), 10, 10, 150, 150, 90, 180);
+            //e.Graphics.DrawArc(new Pen(Brushes.Red), 160, 10, 175, 175, 90, 180);
+
         }
     }
 }

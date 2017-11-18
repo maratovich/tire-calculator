@@ -16,6 +16,7 @@ namespace tire_calculator.Class
         internal int TyreWidth
         {
             get { return _tyreWidth; }
+            set { }
         }
 
         internal int TyreProfile
