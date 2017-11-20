@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using tire_calculator.Class;
+using tyre_calculator.Model;
+using System.Xml;
 
 namespace tire_calculator
 {
@@ -16,25 +17,60 @@ namespace tire_calculator
         public MainForm()
         {
             InitializeComponent();
+            /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
+             ширина профиля, высота и посадочный диаметр из XML файлов:
+            */
+            XmlDocument xDocModelDic = new XmlDocument();
+            xDocModelDic.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
+            XmlElement xRootModel = xDocModelDic.DocumentElement; // получим корневой элемент
             
-            //Заполняем все 6-ть полей ComboBox данными: ширина профиля, высота и посадочный диаметр
-            //В последеющем заполнять данные из XML файла.
-            for (int i = 115; i < 365; i += 10)
+            XmlDocument xDocWidthDic = new XmlDocument();
+            xDocWidthDic.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
+            XmlElement xRootWidth = xDocWidthDic.DocumentElement;
+            foreach (XmlNode xnode in xRootWidth)
             {
-                widthComboBox.Items.Add(i);
-                newWidthComboBox.Items.Add(i);
+                    widthComboBox.Items.Add(xnode.InnerText);
+                    newWidthComboBox.Items.Add(xnode.InnerText);
             }
-            for (int i = 25; i < 95; i += 5)
+
+            XmlDocument xDocProfileDic = new XmlDocument();
+            xDocProfileDic.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
+            XmlElement xRootProfile = xDocProfileDic.DocumentElement;
+            foreach (XmlNode xnode in xRootProfile)
             {
-                profileComboBox.Items.Add(i);
-                newProfileComboBox.Items.Add(i);
+                    profileComboBox.Items.Add(xnode.InnerText);
+                    newProfileComboBox.Items.Add(xnode.InnerText);
             }
-            for (int i = 10; i < 24; i++)
+
+            XmlDocument xWheelSizeDic = new XmlDocument();
+            xWheelSizeDic.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            XmlElement xRootWheelSize = xWheelSizeDic.DocumentElement;
+            foreach (XmlNode xnode in xRootWheelSize)
             {
-                wheelSizeComboBox.Items.Add(i);
-                newWheelSizeComboBox.Items.Add(i);
+                    wheelSizeComboBox.Items.Add(xnode.InnerText);
+                    newWheelSizeComboBox.Items.Add(xnode.InnerText);
             }
-            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
+
+            textBox1.Text = Application.StartupPath;
+                /*
+
+                for (int i = 115; i < 365; i += 10)
+                {
+                    widthComboBox.Items.Add(i);
+                    newWidthComboBox.Items.Add(i);
+                }
+                for (int i = 25; i < 95; i += 5)
+                {
+                    profileComboBox.Items.Add(i);
+                    newProfileComboBox.Items.Add(i);
+                }
+                for (int i = 10; i < 24; i++)
+                {
+                    wheelSizeComboBox.Items.Add(i);
+                    newWheelSizeComboBox.Items.Add(i);
+                }
+                */
+                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
         }
         //Отработка события изменения значения ComboBox
         private void CmbBox_Change(object sender, EventArgs e)
@@ -66,6 +102,7 @@ namespace tire_calculator
                 listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.CircleLenght() - tyre2.CircleLenght()));
                 listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre1.SideWall() - tyre2.SideWall());
                 listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
+                listView1.Items[5].SubItems[1].Text = Convert.ToString(tyre2.SideWall() - tyre1.SideWall());
             }
         }
 

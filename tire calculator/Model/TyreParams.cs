@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
-namespace tire_calculator.Class
+namespace tyre_calculator.Model
 {
     class TyreParams
     {
@@ -16,7 +17,6 @@ namespace tire_calculator.Class
         internal int TyreWidth
         {
             get { return _tyreWidth; }
-            set { }
         }
 
         internal int TyreProfile
@@ -59,6 +59,23 @@ namespace tire_calculator.Class
         internal double RevsPerKm()
         {
             return 1000000 / CircleLenght();
+        }
+    }
+
+    class ComboBoxFilling
+    {
+        string _xmlPath;
+        static XmlDocument _xDoc = new XmlDocument();
+        XmlElement xRoot = _xDoc.DocumentElement;
+
+        internal ComboBoxFilling(string xmlPath)
+        {
+            this._xmlPath = xmlPath;
+        }
+
+        internal string[] Elementi()
+        {
+           return ;
         }
     }
 }
