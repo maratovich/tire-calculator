@@ -20,5 +20,12 @@
       <tyre_sizes>175/70/13</tyre_sizes>
     </model>
   </brand>
+  <brand name="КАМАЗ">
+    <model nick="1111 Ока">
+      <engine>0,65</engine>
+      <prod_year>1988—1996</prod_year>
+      <tyre_sizes>135/80/12</tyre_sizes>
+    </model>
+  </brand>
 </brands>
 

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tire calculator", "tire calculator\tire calculator.csproj", "{27E4B027-AFDE-4B71-8063-A0D4E2D6D57F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyreCalculator", "tire calculator\TyreCalculator.csproj", "{27E4B027-AFDE-4B71-8063-A0D4E2D6D57F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E94F47C2-D2CC-4411-9185-DCEB949F49C8}"
 	ProjectSection(SolutionItems) = preProject

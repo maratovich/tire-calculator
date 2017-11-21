@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<tyreProfile>
+<tyreProfiles>
   <profile>25</profile>
   <profile>30</profile>
   <profile>35</profile>
@@ -14,4 +14,4 @@
   <profile>80</profile>
   <profile>85</profile>
   <profile>90</profile>
-</tyreProfile>
+</tyreProfiles>

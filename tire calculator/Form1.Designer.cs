@@ -397,6 +397,7 @@
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(121, 21);
             this.brandComboBox.TabIndex = 21;
+            this.brandComboBox.SelectedIndexChanged += new System.EventHandler(this.brandComboBox_SelectedIndexChanged);
             // 
             // label8
             // 

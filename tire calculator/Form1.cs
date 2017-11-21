@@ -21,64 +21,58 @@ namespace tire_calculator
             /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
-            XmlDocument xDocModelDic = new XmlDocument();
-            xDocModelDic.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
-            XmlElement xRootModel = xDocModelDic.DocumentElement; // получим корневой элемент
-            
-            XmlDocument xDocWidthDic = new XmlDocument();
-            xDocWidthDic.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
-            XmlElement xRootWidth = xDocWidthDic.DocumentElement;
-            foreach (XmlNode xnode in xRootWidth)
+
+            xDocWidthDic = XDocument.Load("D:\\tire-calculator\\widthDic.xml");
+            foreach (XElement widthElemen in xDocWidthDic.Element("tyreWidths").Elements("width"))
             {
-                    widthComboBox.Items.Add(xnode.InnerText);
-                    newWidthComboBox.Items.Add(xnode.InnerText);
+                widthComboBox.Items.Add(widthElemen.Value);
+                newWidthComboBox.Items.Add(widthElemen.Value);
             }
 
-            XmlDocument xDocProfileDic = new XmlDocument();
-            xDocProfileDic.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
-            XmlElement xRootProfile = xDocProfileDic.DocumentElement;
-            foreach (XmlNode xnode in xRootProfile)
+            xDocProfileDic = XDocument.Load("D:\\tire-calculator\\profileDic.xml");
+            foreach (XElement profileElement in xDocProfileDic.Element("tyreProfiles").Elements("profile"))
             {
-                    profileComboBox.Items.Add(xnode.InnerText);
-                    newProfileComboBox.Items.Add(xnode.InnerText);
+                profileComboBox.Items.Add(profileElement.Value);
+                newProfileComboBox.Items.Add(profileElement.Value);
             }
 
-            //XmlDocument xWheelSizeDic = new XmlDocument();
-            //xWheelSizeDic.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
-            //XmlElement xRootWheelSize = xWheelSizeDic.DocumentElement;
-            //foreach (XmlNode xnode in xRootWheelSize)
-            //{
-            //        wheelSizeComboBox.Items.Add(xnode.InnerText);
-            //        newWheelSizeComboBox.Items.Add(xnode.InnerText);
-            //}
-            XDocument xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            xWheelSizeDic = XDocument.Load("D:\\tire-calculator\\wheelSizeDic.xml");
             foreach (XElement wheelElement in xWheelSizeDic.Element("wheelSizes").Elements("size"))
             {
                 wheelSizeComboBox.Items.Add(wheelElement.Value);
                 newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
-            textBox1.Text = Application.StartupPath;
-                /*
+            xDocModelDic = XDocument.Load("D:\\tire-calculator\\byModelDic.xml");
+            foreach (XElement modelElement in xDocModelDic.Element("brands").Elements("brand"))
+            {
+                XAttribute nameAttribute = modelElement.Attribute("name");
+                brandComboBox.Items.Add(nameAttribute.Value);
+            }
 
-                for (int i = 115; i < 365; i += 10)
-                {
-                    widthComboBox.Items.Add(i);
-                    newWidthComboBox.Items.Add(i);
-                }
-                for (int i = 25; i < 95; i += 5)
-                {
-                    profileComboBox.Items.Add(i);
-                    newProfileComboBox.Items.Add(i);
-                }
-                for (int i = 10; i < 24; i++)
-                {
-                    wheelSizeComboBox.Items.Add(i);
-                    newWheelSizeComboBox.Items.Add(i);
-                }
-                */
-                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
         }
+
+        /// <summary>
+        /// Список моделям
+        /// </summary>
+        XDocument xDocModelDic;
+
+        /// <summary>
+        /// Список ширины
+        /// </summary>
+        XDocument xDocWidthDic;
+
+        /// <summary>
+        /// Список высоты профиля
+        /// </summary>
+        XDocument xDocProfileDic;
+
+        /// <summary> 
+        /// Список посадочных размерностей
+        /// </summary>
+        XDocument xWheelSizeDic;
+
         //Отработка события изменения значения ComboBox
         private void CmbBox_Change(object sender, EventArgs e)
         {
@@ -119,5 +113,18 @@ namespace tire_calculator
             //e.Graphics.DrawArc(new Pen(Brushes.Red), 160, 10, 175, 175, 90, 180);
 
         }
+
+        private void brandComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var items = from xe in xDocModelDic.Element("brands").Elements("brand")
+                        where xe.Element("brand").Value == brandComboBox.Text
+                        select xe.Element("model").Value;
+            if(items!=null)
+            {
+
+            }
+            //xe.Element("price").Value
+        }
+
     }
 }

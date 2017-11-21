@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<tyreWidth>
+<tyreWidths>
   <width>115</width>
   <width>125</width>
   <width>135</width>
@@ -25,4 +25,4 @@
   <width>335</width>
   <width>345</width>
   <width>355</width>
-</tyreWidth>
+</tyreWidths>
