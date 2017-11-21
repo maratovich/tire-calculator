@@ -73,9 +73,9 @@ namespace tyre_calculator.Model
             this._xmlPath = xmlPath;
         }
 
-        internal string[] Elementi()
-        {
-           return ;
-        }
+        //internal string[] Elementi()
+        //{
+        //   return ;
+        //}
     }
 }

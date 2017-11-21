@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using tyre_calculator.Model;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace tire_calculator
 {
@@ -42,13 +43,19 @@ namespace tire_calculator
                     newProfileComboBox.Items.Add(xnode.InnerText);
             }
 
-            XmlDocument xWheelSizeDic = new XmlDocument();
-            xWheelSizeDic.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
-            XmlElement xRootWheelSize = xWheelSizeDic.DocumentElement;
-            foreach (XmlNode xnode in xRootWheelSize)
+            //XmlDocument xWheelSizeDic = new XmlDocument();
+            //xWheelSizeDic.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            //XmlElement xRootWheelSize = xWheelSizeDic.DocumentElement;
+            //foreach (XmlNode xnode in xRootWheelSize)
+            //{
+            //        wheelSizeComboBox.Items.Add(xnode.InnerText);
+            //        newWheelSizeComboBox.Items.Add(xnode.InnerText);
+            //}
+            XDocument xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            foreach (XElement wheelElement in xWheelSizeDic.Element("wheelSizes").Elements("size"))
             {
-                    wheelSizeComboBox.Items.Add(xnode.InnerText);
-                    newWheelSizeComboBox.Items.Add(xnode.InnerText);
+                wheelSizeComboBox.Items.Add(wheelElement.Value);
+                newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
             textBox1.Text = Application.StartupPath;
