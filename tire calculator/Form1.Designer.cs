@@ -380,6 +380,7 @@
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(121, 21);
             this.modelComboBox.TabIndex = 23;
+            this.modelComboBox.SelectedIndexChanged += new System.EventHandler(this.modelComboBox_SelectedIndexChanged);
             // 
             // label9
             // 

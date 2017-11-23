@@ -22,28 +22,28 @@ namespace tire_calculator
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
 
-            xDocWidthDic = XDocument.Load("D:\\tire-calculator\\widthDic.xml");
+            xDocWidthDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
             foreach (XElement widthElemen in xDocWidthDic.Element("tyreWidths").Elements("width"))
             {
                 widthComboBox.Items.Add(widthElemen.Value);
                 newWidthComboBox.Items.Add(widthElemen.Value);
             }
 
-            xDocProfileDic = XDocument.Load("D:\\tire-calculator\\profileDic.xml");
+            xDocProfileDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
             foreach (XElement profileElement in xDocProfileDic.Element("tyreProfiles").Elements("profile"))
             {
                 profileComboBox.Items.Add(profileElement.Value);
                 newProfileComboBox.Items.Add(profileElement.Value);
             }
 
-            xWheelSizeDic = XDocument.Load("D:\\tire-calculator\\wheelSizeDic.xml");
+            xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
             foreach (XElement wheelElement in xWheelSizeDic.Element("wheelSizes").Elements("size"))
             {
                 wheelSizeComboBox.Items.Add(wheelElement.Value);
                 newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
-            xDocModelDic = XDocument.Load("D:\\tire-calculator\\byModelDic.xml");
+            xDocModelDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
             foreach (XElement modelElement in xDocModelDic.Element("brands").Elements("brand"))
             {
                 XAttribute nameAttribute = modelElement.Attribute("name");
@@ -116,15 +116,29 @@ namespace tire_calculator
 
         private void brandComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var items = from xe in xDocModelDic.Element("brands").Elements("brand")
-                        where xe.Element("brand").Value == brandComboBox.Text
-                        select xe.Element("model").Value;
-            if(items!=null)
-            {
+            IEnumerable<XElement> carmodels = from xe in xDocModelDic.Root.Elements("brand")
+                                              where xe.Attribute("name").Value == brandComboBox.Text
+                                              select xe.Element("model");
+                        //select xe.Element("model").Attribute("nick").Value;
 
+            foreach (XElement model in carmodels)
+            {
+                modelComboBox.Items.Add(model.Attribute("nick").Value);
+                textBox1.Text = model.Attribute("nick").Value;
             }
-            //xe.Element("price").Value
+
         }
 
+        private void modelComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        //    var carengines = from xe in xDocModelDic.Element("brands").Elements("brand").Elements("")
+        //                    where xe.Attribute("name").Value == brandComboBox.Text
+        //                    select xe.Element("model").Attribute("nick").Value;
+
+        //    foreach (var model in carmodels)
+        //    {
+        //        modelComboBox.Items.Add(model);
+        //    }
+        }
     }
 }
