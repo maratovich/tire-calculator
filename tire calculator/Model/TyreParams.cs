@@ -78,4 +78,9 @@ namespace tyre_calculator.Model
         //   return ;
         //}
     }
+
+    class ListViewByModel
+    {
+        string _models;
+    }
 }
