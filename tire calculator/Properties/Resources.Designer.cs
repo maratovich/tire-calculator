@@ -59,15 +59,5 @@ namespace TyreCalculator.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap scale_white_png2 {
-            get {
-                object obj = ResourceManager.GetObject("scale_white_png2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

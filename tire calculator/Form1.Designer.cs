@@ -118,7 +118,7 @@
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingslStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.directorySetStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dictionarySetStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveConfStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePdftoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +132,7 @@
             this.labelSpeed70 = new System.Windows.Forms.Label();
             this.labelSpeed80 = new System.Windows.Forms.Label();
             this.labelSpeed90 = new System.Windows.Forms.Label();
-            this.c = new System.Windows.Forms.Label();
+            this.labelSpeed100 = new System.Windows.Forms.Label();
             this.labelSpeed110 = new System.Windows.Forms.Label();
             this.labelSpeed120 = new System.Windows.Forms.Label();
             this.labelSpeed130 = new System.Windows.Forms.Label();
@@ -141,6 +141,7 @@
             this.labelSpeed160 = new System.Windows.Forms.Label();
             this.labelSpeed170 = new System.Windows.Forms.Label();
             this.labelSpeed180 = new System.Windows.Forms.Label();
+            this.titleLabelSpeed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -154,7 +155,7 @@
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(12, 316);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(406, 277);
+            this.pictureBox1.Size = new System.Drawing.Size(406, 300);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -205,7 +206,7 @@
             // 
             // columnHeader13
             // 
-            this.columnHeader13.Text = "sgrgergergerge";
+            this.columnHeader13.Text = "Разница показаний";
             // 
             // label6
             // 
@@ -218,6 +219,7 @@
             // 
             // newProfileComboBox
             // 
+            this.newProfileComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.newProfileComboBox.FormattingEnabled = true;
             this.newProfileComboBox.Location = new System.Drawing.Point(136, 33);
             this.newProfileComboBox.Name = "newProfileComboBox";
@@ -245,6 +247,7 @@
             // 
             // newWidthComboBox
             // 
+            this.newWidthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.newWidthComboBox.FormattingEnabled = true;
             this.newWidthComboBox.Location = new System.Drawing.Point(6, 33);
             this.newWidthComboBox.Name = "newWidthComboBox";
@@ -254,6 +257,7 @@
             // 
             // newWheelSizeComboBox
             // 
+            this.newWheelSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.newWheelSizeComboBox.FormattingEnabled = true;
             this.newWheelSizeComboBox.Location = new System.Drawing.Point(271, 33);
             this.newWheelSizeComboBox.Name = "newWheelSizeComboBox";
@@ -287,8 +291,9 @@
             // 
             // profileComboBox
             // 
+            this.profileComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profileComboBox.FormattingEnabled = true;
-            this.profileComboBox.Location = new System.Drawing.Point(133, 33);
+            this.profileComboBox.Location = new System.Drawing.Point(136, 32);
             this.profileComboBox.Name = "profileComboBox";
             this.profileComboBox.Size = new System.Drawing.Size(121, 21);
             this.profileComboBox.TabIndex = 17;
@@ -314,6 +319,7 @@
             // 
             // widthComboBox
             // 
+            this.widthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.widthComboBox.FormattingEnabled = true;
             this.widthComboBox.Location = new System.Drawing.Point(6, 33);
             this.widthComboBox.Name = "widthComboBox";
@@ -323,6 +329,7 @@
             // 
             // wheelSizeComboBox
             // 
+            this.wheelSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.wheelSizeComboBox.FormattingEnabled = true;
             this.wheelSizeComboBox.Location = new System.Drawing.Point(271, 33);
             this.wheelSizeComboBox.Name = "wheelSizeComboBox";
@@ -393,6 +400,7 @@
             // 
             // yearComboBox
             // 
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.yearComboBox.FormattingEnabled = true;
             this.yearComboBox.Location = new System.Drawing.Point(260, 33);
             this.yearComboBox.Name = "yearComboBox";
@@ -411,6 +419,7 @@
             // 
             // engineComboBox
             // 
+            this.engineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.engineComboBox.FormattingEnabled = true;
             this.engineComboBox.Location = new System.Drawing.Point(6, 82);
             this.engineComboBox.Name = "engineComboBox";
@@ -429,6 +438,7 @@
             // 
             // modelComboBox
             // 
+            this.modelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modelComboBox.FormattingEnabled = true;
             this.modelComboBox.Location = new System.Drawing.Point(133, 33);
             this.modelComboBox.Name = "modelComboBox";
@@ -447,6 +457,7 @@
             // 
             // brandComboBox
             // 
+            this.brandComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.brandComboBox.FormattingEnabled = true;
             this.brandComboBox.Location = new System.Drawing.Point(6, 33);
             this.brandComboBox.Name = "brandComboBox";
@@ -531,18 +542,18 @@
             // settingslStripMenuItem
             // 
             this.settingslStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.directorySetStripMenuItem,
+            this.dictionarySetStripMenuItem,
             this.saveConfStripMenuItem,
             this.savePdftoolStripMenuItem});
             this.settingslStripMenuItem.Name = "settingslStripMenuItem";
             this.settingslStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.settingslStripMenuItem.Text = "Настройки";
             // 
-            // directorySetStripMenuItem
+            // dictionarySetStripMenuItem
             // 
-            this.directorySetStripMenuItem.Name = "directorySetStripMenuItem";
-            this.directorySetStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.directorySetStripMenuItem.Text = "Редактор справочников";
+            this.dictionarySetStripMenuItem.Name = "dictionarySetStripMenuItem";
+            this.dictionarySetStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.dictionarySetStripMenuItem.Text = "Редактор справочников";
             // 
             // saveConfStripMenuItem
             // 
@@ -583,6 +594,7 @@
             this.labelSpeed10.Name = "labelSpeed10";
             this.labelSpeed10.Size = new System.Drawing.Size(26, 17);
             this.labelSpeed10.TabIndex = 32;
+            this.labelSpeed10.Tag = "";
             this.labelSpeed10.Text = "10";
             // 
             // labelSpeed20
@@ -594,6 +606,7 @@
             this.labelSpeed20.Name = "labelSpeed20";
             this.labelSpeed20.Size = new System.Drawing.Size(26, 17);
             this.labelSpeed20.TabIndex = 33;
+            this.labelSpeed20.Tag = "";
             this.labelSpeed20.Text = "20";
             // 
             // labelSpeed30
@@ -673,16 +686,16 @@
             this.labelSpeed90.TabIndex = 40;
             this.labelSpeed90.Text = "90";
             // 
-            // c
+            // labelSpeed100
             // 
-            this.c.AutoSize = true;
-            this.c.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.c.ForeColor = System.Drawing.Color.DarkRed;
-            this.c.Location = new System.Drawing.Point(615, 341);
-            this.c.Name = "c";
-            this.c.Size = new System.Drawing.Size(35, 17);
-            this.c.TabIndex = 41;
-            this.c.Text = "100";
+            this.labelSpeed100.AutoSize = true;
+            this.labelSpeed100.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSpeed100.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelSpeed100.Location = new System.Drawing.Point(615, 341);
+            this.labelSpeed100.Name = "labelSpeed100";
+            this.labelSpeed100.Size = new System.Drawing.Size(35, 17);
+            this.labelSpeed100.TabIndex = 41;
+            this.labelSpeed100.Text = "100";
             // 
             // labelSpeed110
             // 
@@ -772,12 +785,23 @@
             this.labelSpeed180.TabIndex = 49;
             this.labelSpeed180.Text = "180";
             // 
+            // titleLabelSpeed
+            // 
+            this.titleLabelSpeed.AutoSize = true;
+            this.titleLabelSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.titleLabelSpeed.Location = new System.Drawing.Point(508, 577);
+            this.titleLabelSpeed.Name = "titleLabelSpeed";
+            this.titleLabelSpeed.Size = new System.Drawing.Size(160, 34);
+            this.titleLabelSpeed.TabIndex = 50;
+            this.titleLabelSpeed.Text = "Изменение показаний \r\nспидометра:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(884, 601);
+            this.ClientSize = new System.Drawing.Size(884, 626);
+            this.Controls.Add(this.titleLabelSpeed);
             this.Controls.Add(this.labelSpeed180);
             this.Controls.Add(this.labelSpeed170);
             this.Controls.Add(this.labelSpeed160);
@@ -786,7 +810,7 @@
             this.Controls.Add(this.labelSpeed130);
             this.Controls.Add(this.labelSpeed120);
             this.Controls.Add(this.labelSpeed110);
-            this.Controls.Add(this.c);
+            this.Controls.Add(this.labelSpeed100);
             this.Controls.Add(this.labelSpeed90);
             this.Controls.Add(this.labelSpeed80);
             this.Controls.Add(this.labelSpeed70);
@@ -871,7 +895,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingslStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem directorySetStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dictionarySetStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveConfStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePdftoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
@@ -885,7 +909,7 @@
         private System.Windows.Forms.Label labelSpeed70;
         private System.Windows.Forms.Label labelSpeed80;
         private System.Windows.Forms.Label labelSpeed90;
-        private System.Windows.Forms.Label c;
+        private System.Windows.Forms.Label labelSpeed100;
         private System.Windows.Forms.Label labelSpeed110;
         private System.Windows.Forms.Label labelSpeed120;
         private System.Windows.Forms.Label labelSpeed130;
@@ -894,6 +918,7 @@
         private System.Windows.Forms.Label labelSpeed160;
         private System.Windows.Forms.Label labelSpeed170;
         private System.Windows.Forms.Label labelSpeed180;
+        private System.Windows.Forms.Label titleLabelSpeed;
     }
 }
 

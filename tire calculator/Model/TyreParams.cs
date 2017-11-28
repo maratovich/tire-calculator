@@ -61,26 +61,4 @@ namespace tyre_calculator.Model
             return 1000000 / CircleLenght();
         }
     }
-
-    class ComboBoxFilling
-    {
-        string _xmlPath;
-        static XmlDocument _xDoc = new XmlDocument();
-        XmlElement xRoot = _xDoc.DocumentElement;
-
-        internal ComboBoxFilling(string xmlPath)
-        {
-            this._xmlPath = xmlPath;
-        }
-
-        //internal string[] Elementi()
-        //{
-        //   return ;
-        //}
-    }
-
-    class ListViewByModel
-    {
-        string _models;
-    }
 }
