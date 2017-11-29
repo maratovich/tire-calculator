@@ -13,7 +13,7 @@ namespace tyre_calculator.Model
         int _tyreProfile;         // Выстора профиля шины
         int _wheelSize;           // Посадочный диаметр шины (диаметр диска)
         const double inch = 25.4; //Кол-во мм в одном дюйме
-        
+
         internal int TyreWidth
         {
             get { return _tyreWidth; }
@@ -29,7 +29,7 @@ namespace tyre_calculator.Model
             get { return _wheelSize; }
         }
 
-        internal TyreParams (int tyreWidth, int tyreProfile, int wheelSize)
+        internal TyreParams(int tyreWidth, int tyreProfile, int wheelSize)
         {
             this._tyreWidth = tyreWidth;
             this._tyreProfile = tyreProfile;
@@ -61,4 +61,29 @@ namespace tyre_calculator.Model
             return 1000000 / CircleLenght();
         }
     }
+    class Speed
+    {
+        double _percentChange;
+
+        internal double PercentChange
+        {
+            get { return _percentChange; }
+        }
+
+        internal Speed(double PercentChange)
+        {
+            this._percentChange = PercentChange;
+        }
+
+        internal string[] ScaleSpeedo(int numOfDig, int stepOfScale)
+        {
+            string[] scaledig = new string[numOfDig];
+            for (int i = 0, j = stepOfScale; i < numOfDig; i++, j += stepOfScale)
+            {
+                scaledig[i] = Convert.ToString(j * ((_percentChange + 100) / 100));
+            }
+            return scaledig;
+        }
+    }
+
 }

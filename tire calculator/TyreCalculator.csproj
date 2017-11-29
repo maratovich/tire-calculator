@@ -57,6 +57,12 @@
     <Compile Include="DicEditor.Designer.cs">
       <DependentUpon>DicEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModelAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelAddForm.Designer.cs">
+      <DependentUpon>ModelAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\DrawHalfCircle.cs" />
     <Compile Include="Model\TyreParams.cs" />
     <Compile Include="Form1.cs">
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModelAddForm.resx">
+      <DependentUpon>ModelAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

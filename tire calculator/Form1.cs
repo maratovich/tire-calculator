@@ -22,7 +22,6 @@ namespace TyreCalculator
             */
             xDocWidthDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
-                         orderby widths.Value
                          select widths;
             foreach (XElement widthElemen in orderedWidth)
             {
@@ -32,7 +31,6 @@ namespace TyreCalculator
 
             xDocProfileDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
             var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
-                               orderby profiles.Value
                                select profiles;
             foreach (XElement profileElement in orderedProfile)
             {
@@ -42,7 +40,6 @@ namespace TyreCalculator
 
             xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
-                                   orderby wheelSizes.Value
                                    select wheelSizes;
             foreach (XElement wheelElement in orderedWheelSize)
             {
@@ -63,11 +60,11 @@ namespace TyreCalculator
 
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
             listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            //listView1.Items[0].UseItemStyleForSubItems = false;
-            //listView1.Items[1].UseItemStyleForSubItems = false;
-            //listView1.Items[3].UseItemStyleForSubItems = false;
-            //listView1.Items[4].UseItemStyleForSubItems = false;
-            //listView1.Items[5].UseItemStyleForSubItems = false;
+            listView1.Items[0].UseItemStyleForSubItems = false;
+            listView1.Items[1].UseItemStyleForSubItems = false;
+            listView1.Items[3].UseItemStyleForSubItems = false;
+            listView1.Items[4].UseItemStyleForSubItems = false;
+            listView1.Items[5].UseItemStyleForSubItems = false;
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 listView1.Items[i].UseItemStyleForSubItems = false;
@@ -117,6 +114,8 @@ namespace TyreCalculator
         TyreParams tyre2;
 
         Double percentChange;
+
+        Speed Speedo;
 
         //Отработка события изменения значений ComboBox
         private void CmbBox_Change(object sender, EventArgs e)
@@ -209,28 +208,49 @@ namespace TyreCalculator
                     listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
                 }
                 //listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
+
                 /// <summary>
                 /// Заполнение шкалы визуального "спидометра" значениями отклонений
                 /// </summary>
-                labelSpeed10.Text = Convert.ToString(10 * ((percentChange + 100) / 100));
-                labelSpeed20.Text = Convert.ToString(20 * ((percentChange + 100) / 100));
-                labelSpeed30.Text = Convert.ToString(30 * ((percentChange + 100) / 100));
-                labelSpeed40.Text = Convert.ToString(40 * ((percentChange + 100) / 100));
-                labelSpeed50.Text = Convert.ToString(50 * ((percentChange + 100) / 100));
-                labelSpeed60.Text = Convert.ToString(60 * ((percentChange + 100) / 100));
-                labelSpeed70.Text = Convert.ToString(70 * ((percentChange + 100) / 100));
-                labelSpeed80.Text = Convert.ToString(80 * ((percentChange + 100) / 100));
-                labelSpeed90.Text = Convert.ToString(90 * ((percentChange + 100) / 100));
-                labelSpeed100.Text = Convert.ToString(100 * ((percentChange + 100) / 100));
-                labelSpeed110.Text = Convert.ToString(110 * ((percentChange + 100) / 100));
-                labelSpeed120.Text = Convert.ToString(120 * ((percentChange + 100) / 100));
-                labelSpeed130.Text = Convert.ToString(130 * ((percentChange + 100) / 100));
-                labelSpeed140.Text = Convert.ToString(140 * ((percentChange + 100) / 100));
-                labelSpeed150.Text = Convert.ToString(150 * ((percentChange + 100) / 100));
-                labelSpeed160.Text = Convert.ToString(160 * ((percentChange + 100) / 100));
-                labelSpeed170.Text = Convert.ToString(170 * ((percentChange + 100) / 100));
-                labelSpeed180.Text = Convert.ToString(180 * ((percentChange + 100) / 100));
-
+                //labelSpeed10.Text = Convert.ToString(10 * ((percentChange + 100) / 100));
+                //labelSpeed20.Text = Convert.ToString(20 * ((percentChange + 100) / 100));
+                //labelSpeed30.Text = Convert.ToString(30 * ((percentChange + 100) / 100));
+                //labelSpeed40.Text = Convert.ToString(40 * ((percentChange + 100) / 100));
+                //labelSpeed50.Text = Convert.ToString(50 * ((percentChange + 100) / 100));
+                //labelSpeed60.Text = Convert.ToString(60 * ((percentChange + 100) / 100));
+                //labelSpeed70.Text = Convert.ToString(70 * ((percentChange + 100) / 100));
+                //labelSpeed80.Text = Convert.ToString(80 * ((percentChange + 100) / 100));
+                //labelSpeed90.Text = Convert.ToString(90 * ((percentChange + 100) / 100));
+                //labelSpeed100.Text = Convert.ToString(100 * ((percentChange + 100) / 100));
+                //labelSpeed110.Text = Convert.ToString(110 * ((percentChange + 100) / 100));
+                //labelSpeed120.Text = Convert.ToString(120 * ((percentChange + 100) / 100));
+                //labelSpeed130.Text = Convert.ToString(130 * ((percentChange + 100) / 100));
+                //labelSpeed140.Text = Convert.ToString(140 * ((percentChange + 100) / 100));
+                //labelSpeed150.Text = Convert.ToString(150 * ((percentChange + 100) / 100));
+                //labelSpeed160.Text = Convert.ToString(160 * ((percentChange + 100) / 100));
+                //labelSpeed170.Text = Convert.ToString(170 * ((percentChange + 100) / 100));
+                //labelSpeed180.Text = Convert.ToString(180 * ((percentChange + 100) / 100));
+                //Изменение показаний спидометра перенесено в отдельный класс!
+                Speedo = new Speed(percentChange);
+                string[] strDigs = Speedo.ScaleSpeedo(18, 10);
+                labelSpeed10.Text = strDigs[0];
+                labelSpeed20.Text = strDigs[1];
+                labelSpeed30.Text = strDigs[2];
+                labelSpeed40.Text = strDigs[3];
+                labelSpeed50.Text = strDigs[4];
+                labelSpeed60.Text = strDigs[5];
+                labelSpeed70.Text = strDigs[6];
+                labelSpeed80.Text = strDigs[7];
+                labelSpeed90.Text = strDigs[8];
+                labelSpeed100.Text = strDigs[9];
+                labelSpeed110.Text = strDigs[10];
+                labelSpeed120.Text = strDigs[11];
+                labelSpeed130.Text = strDigs[12];
+                labelSpeed140.Text = strDigs[13];
+                labelSpeed150.Text = strDigs[14];
+                labelSpeed160.Text = strDigs[15];
+                labelSpeed170.Text = strDigs[16];
+                labelSpeed180.Text = strDigs[17];
             }
         }
 
@@ -309,27 +329,18 @@ namespace TyreCalculator
             foreach (XElement elem in infobrand)
             {
                 values.Add(elem.Attribute("name").Value);
-                //listView2.Items[0].SubItems[0].Text = elem.Attribute("name").Value;
-                //textBox1.AppendText(elem.Element("model").Attribute("nick").Value + " ");
-                //textBox1.AppendText(elem.Element("model").Element("prod_year").Attribute("year").Value + " ");
-                //textBox1.AppendText(elem.Element("model").Element("prod_year").Element("engine").Value + " ");
-                //foreach (var elem2 in elem.Element("model").Element("prod_year")) textBox1.AppendText(elem.Element("model").Element("prod_year").Element("tyre_sizes").Value + " ");
             }
             foreach (XElement elem in infomodel)
             {
                 values.Add(elem.Attribute("nick").Value);
-                //listView2.Items[0].SubItems[1].Text = elem.Attribute("nick").Value;
             }
             foreach (XElement elem in infoyear)
             {
                 values.Add(elem.Attribute("year").Value);
                 values.Add(elem.Element("engine").Value);
-                //listView2.Items[0].SubItems[2].Text = elem.Attribute("year").Value;
-                //listView2.Items[0].SubItems[3].Text = elem.Element("engine").Value;
                 foreach (XElement elem2 in elem.Elements("tyre_sizes"))
                 {
                     values.Add(elem2.Value);
-                    //listView2.Items[0].SubItems.Add(elem2.Value);
                 }
             }
             listView2.Items.Add(new ListViewItem(values.ToArray()));
@@ -344,7 +355,7 @@ namespace TyreCalculator
             yearComboBox.Items.Clear();
             engineComboBox.SelectedIndex = -1;
             engineComboBox.Items.Clear();
-            //listView2.Items.Clear();
+            listView2.Items.Clear();
         }
 
         private void engineComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -357,7 +368,14 @@ namespace TyreCalculator
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //AboutForm aboutForm = new AboutForm();
+            AboutForm about = new AboutForm();
+            about.Show();
+        }
+
+        private void dictionarySetStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DicEditor dicEditor = new DicEditor();
+            dicEditor.Show();
         }
     }
 }
