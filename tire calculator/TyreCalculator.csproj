@@ -57,6 +57,12 @@
     <Compile Include="DicEditor.Designer.cs">
       <DependentUpon>DicEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="DicEditorTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DicEditorTree.Designer.cs">
+      <DependentUpon>DicEditorTree.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModelAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DicEditor.resx">
       <DependentUpon>DicEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DicEditorTree.resx">
+      <DependentUpon>DicEditorTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

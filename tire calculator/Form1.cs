@@ -374,8 +374,8 @@ namespace TyreCalculator
 
         private void dictionarySetStripMenuItem_Click(object sender, EventArgs e)
         {
-            DicEditor dicEditor = new DicEditor();
-            dicEditor.Show();
+            DicEditorTree dicEditorTree = new DicEditorTree();
+            dicEditorTree.Show();
         }
     }
 }
