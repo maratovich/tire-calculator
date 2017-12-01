@@ -20,7 +20,7 @@ namespace TyreCalculator
             /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
-            xDocWidthDic = XDocument.Load("D:\\Repos\\tire-calculator\\widthDic.xml");
+            xDocWidthDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
                          select widths;
             foreach (XElement widthElemen in orderedWidth)
@@ -29,7 +29,7 @@ namespace TyreCalculator
                 newWidthComboBox.Items.Add(widthElemen.Value);
             }
 
-            xDocProfileDic = XDocument.Load("D:\\Repos\\tire-calculator\\profileDic.xml");
+            xDocProfileDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
             var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
                                select profiles;
             foreach (XElement profileElement in orderedProfile)
@@ -38,7 +38,7 @@ namespace TyreCalculator
                 newProfileComboBox.Items.Add(profileElement.Value);
             }
 
-            xWheelSizeDic = XDocument.Load("D:\\Repos\\tire-calculator\\wheelSizeDic.xml");
+            xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
                                    select wheelSizes;
             foreach (XElement wheelElement in orderedWheelSize)
@@ -47,7 +47,7 @@ namespace TyreCalculator
                 newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
-            xDocModelDic = XDocument.Load("D:\\Repos\\tire-calculator\\byModelDic.xml");
+            xDocModelDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
             IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
                                    select brands;
 
@@ -212,24 +212,7 @@ namespace TyreCalculator
                 /// <summary>
                 /// Заполнение шкалы визуального "спидометра" значениями отклонений
                 /// </summary>
-                //labelSpeed10.Text = Convert.ToString(10 * ((percentChange + 100) / 100));
-                //labelSpeed20.Text = Convert.ToString(20 * ((percentChange + 100) / 100));
-                //labelSpeed30.Text = Convert.ToString(30 * ((percentChange + 100) / 100));
-                //labelSpeed40.Text = Convert.ToString(40 * ((percentChange + 100) / 100));
-                //labelSpeed50.Text = Convert.ToString(50 * ((percentChange + 100) / 100));
-                //labelSpeed60.Text = Convert.ToString(60 * ((percentChange + 100) / 100));
-                //labelSpeed70.Text = Convert.ToString(70 * ((percentChange + 100) / 100));
-                //labelSpeed80.Text = Convert.ToString(80 * ((percentChange + 100) / 100));
-                //labelSpeed90.Text = Convert.ToString(90 * ((percentChange + 100) / 100));
-                //labelSpeed100.Text = Convert.ToString(100 * ((percentChange + 100) / 100));
-                //labelSpeed110.Text = Convert.ToString(110 * ((percentChange + 100) / 100));
-                //labelSpeed120.Text = Convert.ToString(120 * ((percentChange + 100) / 100));
-                //labelSpeed130.Text = Convert.ToString(130 * ((percentChange + 100) / 100));
-                //labelSpeed140.Text = Convert.ToString(140 * ((percentChange + 100) / 100));
-                //labelSpeed150.Text = Convert.ToString(150 * ((percentChange + 100) / 100));
-                //labelSpeed160.Text = Convert.ToString(160 * ((percentChange + 100) / 100));
-                //labelSpeed170.Text = Convert.ToString(170 * ((percentChange + 100) / 100));
-                //labelSpeed180.Text = Convert.ToString(180 * ((percentChange + 100) / 100));
+
                 //Изменение показаний спидометра перенесено в отдельный класс!
                 Speedo = new Speed(percentChange);
                 string[] strDigs = Speedo.ScaleSpeedo(18, 10);

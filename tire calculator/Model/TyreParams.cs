@@ -61,6 +61,7 @@ namespace tyre_calculator.Model
             return 1000000 / CircleLenght();
         }
     }
+
     class Speed
     {
         double _percentChange;

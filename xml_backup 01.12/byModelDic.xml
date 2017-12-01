@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<brands>
+  <brand name="Lada">
+    <model nick="2101 Жигули">
+      <prod_year year="1970—1983">
+        <engine>1,2</engine>
+        <tyre_sizes>165/80/13</tyre_sizes>
+        <tyre_sizes>175/70/13</tyre_sizes>
+      </prod_year>
+    </model>
+    <model nick="21011 Жигули-1300">
+      <prod_year year="1974—1983">
+        <engine>1,3</engine>
+        <tyre_sizes>165/80/13</tyre_sizes>
+        <tyre_sizes>175/70/13</tyre_sizes>
+      </prod_year>
+    </model>
+    <model nick="21013 Lada-1200s">
+      <prod_year year="1977—1988">
+        <engine>1,2</engine>
+        <tyre_sizes>165/80/13</tyre_sizes>
+        <tyre_sizes>175/70/13</tyre_sizes>
+      </prod_year>
+    </model>
+  </brand>
+  <brand name="КАМАЗ">
+    <model nick="1111 Ока">
+      <prod_year year="1988—1996">
+        <engine>0,65</engine>
+        <tyre_sizes>135/80/12</tyre_sizes>
+      </prod_year>
+    </model>
+  </brand>
+  <brand name="KIA">
+    <model nick="Rio">
+      <prod_year year="2012—2017">
+        <engine>1,4</engine>
+        <tyre_sizes>185/65/15</tyre_sizes>
+      </prod_year>
+    </model>
+  </brand>
+</brands>
