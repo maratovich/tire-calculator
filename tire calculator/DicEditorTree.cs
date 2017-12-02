@@ -63,17 +63,18 @@ namespace TyreCalculator
                                  select profiles;
             foreach (XElement profileElement in orderedProfile)
             {
-                listBox2.Items.Add(profileElement.Value);
+                listBoxWidths.Items.Add(profileElement.Value);
             }
 
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
                                    select wheelSizes;
             foreach (XElement wheelElement in orderedWheelSize)
             {
-                listBox3.Items.Add(wheelElement.Value);
+                listBoxWheelSize.Items.Add(wheelElement.Value);
             }
         }
 
+        //Обработчики событий на вкладке "Ширина профиля"
         private void brandComboBoxEd_SelectedIndexChanged(object sender, EventArgs e)
         {
             //var brands = from xbrand in doc.Root.Elements("brand")
@@ -83,7 +84,7 @@ namespace TyreCalculator
 
         private void buttonEditWidth_Click(object sender, EventArgs e)
         {
-            string editingWidth = textBox1.Text;
+            string editingWidth = textBoxWidth.Text;
             XElement width = xDocWidthDic.Root;
             foreach (XElement widthElemen in width.Elements("width").ToList())
             {
@@ -91,8 +92,8 @@ namespace TyreCalculator
 
             }
             xDocWidthDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
-            textBox1.Clear();
-            textBox1.Enabled = false;
+            textBoxWidth.Clear();
+            textBoxWidth.Enabled = false;
 
         }
 
@@ -110,11 +111,11 @@ namespace TyreCalculator
         private void buttonAddWidth_Click(object sender, EventArgs e)
         {
             XElement width = xDocWidthDic.Root;
-            string newWidth = textBox1.Text;
+            string newWidth = textBoxWidth.Text;
             width.Add(new XElement("width", newWidth));
             xDocWidthDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
-            textBox1.Clear();
-            textBox1.Enabled = false;
+            textBoxWidth.Clear();
+            textBoxWidth.Enabled = false;
 
         }
 
@@ -127,10 +128,96 @@ namespace TyreCalculator
 
         private void listBoxWidths_SelectedValueChanged(object sender, EventArgs e)
         {
-            textBox1.Enabled = true;
+            textBoxWidth.Enabled = true;
             buttonAddWidth.Enabled = true;
             buttonEditWidth.Enabled = true;
             buttonDelWidth.Enabled = true;
+        }
+        //Обработчики событий на вкладке "Высота профиля"
+        private void buttonEditProfile_Click(object sender, EventArgs e)
+        {
+            string editingProfile = textBoxProfile.Text;
+            XElement profile = xDocProfileDic.Root;
+            foreach (XElement profileElemen in profile.Elements("profile").ToList())
+            {
+                if (profileElemen.Value == listBoxProfiles.SelectedItem.ToString()) profileElemen.Value = editingProfile;
+
+            }
+            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTprofileDic.xml");
+            textBoxProfile.Clear();
+            textBoxProfile.Enabled = false;
+        }
+
+        private void buttonDelProfile_Click(object sender, EventArgs e)
+        {
+            XElement profile = xDocProfileDic.Root;
+            foreach (XElement profileElemen in profile.Elements("profile").ToList())
+            {
+                if (profileElemen.Value == listBoxProfiles.SelectedItem.ToString()) profileElemen.Remove();
+
+            }
+            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
+        }
+
+        private void buttonAddProfile_Click(object sender, EventArgs e)
+        {
+            XElement profile = xDocProfileDic.Root;
+            string newProfile = textBoxProfile.Text;
+            profile.Add(new XElement("profile", newProfile));
+            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
+            textBoxProfile.Clear();
+            textBoxProfile.Enabled = false;
+        }
+
+        private void listBoxProfiles_SelectedValueChanged(object sender, EventArgs e)
+        {
+            textBoxProfile.Enabled = true;
+            buttonAddProfile.Enabled = true;
+            buttonEditProfile.Enabled = true;
+            buttonDelProfile.Enabled = true;
+        }
+        //Обработчики событий на вкладке "Посадочные размеры"
+        private void buttonEditWheelSize_Click(object sender, EventArgs e)
+        {
+            string editingWheelSize = textBoxWheelSize.Text;
+            XElement wheelSize = xWheelSizeDic.Root;
+            foreach (XElement profileElemen in wheelSize.Elements("size").ToList())
+            {
+                if (profileElemen.Value == listBoxWheelSize.SelectedItem.ToString()) profileElemen.Value = editingWheelSize;
+
+            }
+            xWheelSizeDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwheelSizeDic.xml");
+            textBoxWheelSize.Clear();
+            textBoxWheelSize.Enabled = false;
+        }
+
+        private void buttonDelWheelSize_Click(object sender, EventArgs e)
+        {
+            XElement wheelSize = xWheelSizeDic.Root;
+            foreach (XElement profileElemen in wheelSize.Elements("size").ToList())
+            {
+                if (profileElemen.Value == listBoxWheelSize.SelectedItem.ToString()) profileElemen.Remove();
+
+            }
+            xWheelSizeDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwheelSizeDic.xml");
+        }
+
+        private void buttonAddWheelSize_Click(object sender, EventArgs e)
+        {
+            XElement wheelSize = xWheelSizeDic.Root;
+            string newWheelSize = textBoxWheelSize.Text;
+            wheelSize.Add(new XElement("size", newWheelSize));
+            xWheelSizeDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwheelSizeDic.xml");
+            textBoxWheelSize.Clear();
+            textBoxWheelSize.Enabled = false;
+        }
+
+        private void listBoxWheelSize_SelectedValueChanged(object sender, EventArgs e)
+        {
+            textBoxWheelSize.Enabled = true;
+            buttonAddWheelSize.Enabled = true;
+            buttonEditWheelSize.Enabled = true;
+            buttonDelWheelSize.Enabled = true;
         }
     }
 }

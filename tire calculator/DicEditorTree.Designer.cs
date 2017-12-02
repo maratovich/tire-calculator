@@ -47,22 +47,31 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBoxWidths = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.textBoxWidth = new System.Windows.Forms.TextBox();
+            this.buttonDelProfile = new System.Windows.Forms.Button();
+            this.buttonEditProfile = new System.Windows.Forms.Button();
+            this.buttonAddProfile = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxProfile = new System.Windows.Forms.TextBox();
+            this.listBoxProfiles = new System.Windows.Forms.ListBox();
+            this.buttonDelWheelSize = new System.Windows.Forms.Button();
+            this.buttonEditWheelSize = new System.Windows.Forms.Button();
+            this.buttonAddWheelSize = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listBoxTest = new System.Windows.Forms.ListBox();
+            this.textBoxWheelSize = new System.Windows.Forms.TextBox();
+            this.listBoxWheelSize = new System.Windows.Forms.ListBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,7 +113,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(327, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(277, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -192,15 +201,14 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(36, 4);
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(268, 328);
             this.treeView1.TabIndex = 3;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.listBoxTest);
-            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel4);
             this.tabPage2.Controls.Add(this.buttonDelWidth);
             this.tabPage2.Controls.Add(this.buttonEditWidth);
             this.tabPage2.Controls.Add(this.buttonAddWidth);
@@ -248,7 +256,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.textBoxWidth);
             this.groupBox1.Controls.Add(this.listBoxWidths);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
@@ -270,6 +278,10 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage3.Controls.Add(this.buttonDelProfile);
+            this.tabPage3.Controls.Add(this.buttonEditProfile);
+            this.tabPage3.Controls.Add(this.buttonAddProfile);
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -279,26 +291,12 @@
             this.tabPage3.Text = "Высота профиля";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.listBox2);
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(212, 321);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Список:";
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(3, 16);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(86, 225);
-            this.listBox2.TabIndex = 0;
-            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage4.Controls.Add(this.buttonDelWheelSize);
+            this.tabPage4.Controls.Add(this.buttonEditWheelSize);
+            this.tabPage4.Controls.Add(this.buttonAddWheelSize);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -308,49 +306,181 @@
             this.tabPage4.Text = "Посадочные размеры";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // textBoxWidth
+            // 
+            this.textBoxWidth.Enabled = false;
+            this.textBoxWidth.Location = new System.Drawing.Point(3, 247);
+            this.textBoxWidth.Name = "textBoxWidth";
+            this.textBoxWidth.Size = new System.Drawing.Size(86, 20);
+            this.textBoxWidth.TabIndex = 4;
+            this.textBoxWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            // 
+            // buttonDelProfile
+            // 
+            this.buttonDelProfile.Enabled = false;
+            this.buttonDelProfile.Location = new System.Drawing.Point(8, 336);
+            this.buttonDelProfile.Name = "buttonDelProfile";
+            this.buttonDelProfile.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelProfile.TabIndex = 7;
+            this.buttonDelProfile.Text = "Удалить";
+            this.buttonDelProfile.UseVisualStyleBackColor = true;
+            this.buttonDelProfile.Click += new System.EventHandler(this.buttonDelProfile_Click);
+            // 
+            // buttonEditProfile
+            // 
+            this.buttonEditProfile.Enabled = false;
+            this.buttonEditProfile.Location = new System.Drawing.Point(8, 307);
+            this.buttonEditProfile.Name = "buttonEditProfile";
+            this.buttonEditProfile.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditProfile.TabIndex = 6;
+            this.buttonEditProfile.Text = "Изменить";
+            this.buttonEditProfile.UseVisualStyleBackColor = true;
+            this.buttonEditProfile.Click += new System.EventHandler(this.buttonEditProfile_Click);
+            // 
+            // buttonAddProfile
+            // 
+            this.buttonAddProfile.Enabled = false;
+            this.buttonAddProfile.Location = new System.Drawing.Point(8, 280);
+            this.buttonAddProfile.Name = "buttonAddProfile";
+            this.buttonAddProfile.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddProfile.TabIndex = 5;
+            this.buttonAddProfile.Text = "Добавить";
+            this.buttonAddProfile.UseVisualStyleBackColor = true;
+            this.buttonAddProfile.Click += new System.EventHandler(this.buttonAddProfile_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxProfile);
+            this.groupBox2.Controls.Add(this.listBoxProfiles);
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(91, 273);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Список:";
+            // 
+            // textBoxProfile
+            // 
+            this.textBoxProfile.Enabled = false;
+            this.textBoxProfile.Location = new System.Drawing.Point(3, 247);
+            this.textBoxProfile.Name = "textBoxProfile";
+            this.textBoxProfile.Size = new System.Drawing.Size(86, 20);
+            this.textBoxProfile.TabIndex = 4;
+            this.textBoxProfile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            // 
+            // listBoxProfiles
+            // 
+            this.listBoxProfiles.FormattingEnabled = true;
+            this.listBoxProfiles.HorizontalScrollbar = true;
+            this.listBoxProfiles.Location = new System.Drawing.Point(3, 16);
+            this.listBoxProfiles.Name = "listBoxProfiles";
+            this.listBoxProfiles.Size = new System.Drawing.Size(86, 225);
+            this.listBoxProfiles.Sorted = true;
+            this.listBoxProfiles.TabIndex = 0;
+            this.listBoxProfiles.SelectedValueChanged += new System.EventHandler(this.listBoxProfiles_SelectedValueChanged);
+            // 
+            // buttonDelWheelSize
+            // 
+            this.buttonDelWheelSize.Enabled = false;
+            this.buttonDelWheelSize.Location = new System.Drawing.Point(8, 336);
+            this.buttonDelWheelSize.Name = "buttonDelWheelSize";
+            this.buttonDelWheelSize.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelWheelSize.TabIndex = 11;
+            this.buttonDelWheelSize.Text = "Удалить";
+            this.buttonDelWheelSize.UseVisualStyleBackColor = true;
+            this.buttonDelWheelSize.Click += new System.EventHandler(this.buttonDelWheelSize_Click);
+            // 
+            // buttonEditWheelSize
+            // 
+            this.buttonEditWheelSize.Enabled = false;
+            this.buttonEditWheelSize.Location = new System.Drawing.Point(8, 307);
+            this.buttonEditWheelSize.Name = "buttonEditWheelSize";
+            this.buttonEditWheelSize.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditWheelSize.TabIndex = 10;
+            this.buttonEditWheelSize.Text = "Изменить";
+            this.buttonEditWheelSize.UseVisualStyleBackColor = true;
+            this.buttonEditWheelSize.Click += new System.EventHandler(this.buttonEditWheelSize_Click);
+            // 
+            // buttonAddWheelSize
+            // 
+            this.buttonAddWheelSize.Enabled = false;
+            this.buttonAddWheelSize.Location = new System.Drawing.Point(8, 280);
+            this.buttonAddWheelSize.Name = "buttonAddWheelSize";
+            this.buttonAddWheelSize.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddWheelSize.TabIndex = 9;
+            this.buttonAddWheelSize.Text = "Добавить";
+            this.buttonAddWheelSize.UseVisualStyleBackColor = true;
+            this.buttonAddWheelSize.Click += new System.EventHandler(this.buttonAddWheelSize_Click);
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.listBox3);
+            this.groupBox3.Controls.Add(this.textBoxWheelSize);
+            this.groupBox3.Controls.Add(this.listBoxWheelSize);
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(212, 321);
-            this.groupBox3.TabIndex = 2;
+            this.groupBox3.Size = new System.Drawing.Size(91, 273);
+            this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Список:";
             // 
-            // listBox3
+            // textBoxWheelSize
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(3, 16);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(86, 225);
-            this.listBox3.TabIndex = 0;
+            this.textBoxWheelSize.Enabled = false;
+            this.textBoxWheelSize.Location = new System.Drawing.Point(3, 247);
+            this.textBoxWheelSize.Name = "textBoxWheelSize";
+            this.textBoxWheelSize.Size = new System.Drawing.Size(86, 20);
+            this.textBoxWheelSize.TabIndex = 4;
+            this.textBoxWheelSize.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // textBox1
+            // listBoxWheelSize
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(3, 247);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(86, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.listBoxWheelSize.FormattingEnabled = true;
+            this.listBoxWheelSize.HorizontalScrollbar = true;
+            this.listBoxWheelSize.Location = new System.Drawing.Point(3, 16);
+            this.listBoxWheelSize.Name = "listBoxWheelSize";
+            this.listBoxWheelSize.Size = new System.Drawing.Size(86, 225);
+            this.listBoxWheelSize.Sorted = true;
+            this.listBoxWheelSize.TabIndex = 0;
+            this.listBoxWheelSize.SelectedValueChanged += new System.EventHandler(this.listBoxWheelSize_SelectedValueChanged);
             // 
-            // label5
+            // tableLayoutPanel2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(114, 253);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "label5";
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(100, 9);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(535, 350);
+            this.tableLayoutPanel2.TabIndex = 5;
             // 
-            // listBoxTest
+            // tableLayoutPanel3
             // 
-            this.listBoxTest.FormattingEnabled = true;
-            this.listBoxTest.Location = new System.Drawing.Point(117, 19);
-            this.listBoxTest.Name = "listBoxTest";
-            this.listBoxTest.Size = new System.Drawing.Size(120, 95);
-            this.listBoxTest.TabIndex = 6;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(98, 9);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(535, 350);
+            this.tableLayoutPanel3.TabIndex = 8;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(98, 9);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(535, 350);
+            this.tableLayoutPanel4.TabIndex = 6;
             // 
             // DicEditorTree
             // 
@@ -367,13 +497,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -399,13 +530,22 @@
         private System.Windows.Forms.Button buttonDelWidth;
         private System.Windows.Forms.Button buttonEditWidth;
         private System.Windows.Forms.Button buttonAddWidth;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxWidth;
         private System.Windows.Forms.ListBox listBoxWidths;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBoxTest;
+        private System.Windows.Forms.Button buttonDelProfile;
+        private System.Windows.Forms.Button buttonEditProfile;
+        private System.Windows.Forms.Button buttonAddProfile;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBoxProfile;
+        private System.Windows.Forms.ListBox listBoxProfiles;
+        private System.Windows.Forms.Button buttonDelWheelSize;
+        private System.Windows.Forms.Button buttonAddWheelSize;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBoxWheelSize;
+        private System.Windows.Forms.ListBox listBoxWheelSize;
+        private System.Windows.Forms.Button buttonEditWheelSize;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
