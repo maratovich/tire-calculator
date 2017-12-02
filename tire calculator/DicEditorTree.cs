@@ -63,7 +63,7 @@ namespace TyreCalculator
                                  select profiles;
             foreach (XElement profileElement in orderedProfile)
             {
-                listBoxWidths.Items.Add(profileElement.Value);
+                listBoxProfiles.Items.Add(profileElement.Value);
             }
 
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
@@ -156,7 +156,7 @@ namespace TyreCalculator
                 if (profileElemen.Value == listBoxProfiles.SelectedItem.ToString()) profileElemen.Remove();
 
             }
-            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
+            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTprofileDic.xml");
         }
 
         private void buttonAddProfile_Click(object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace TyreCalculator
             XElement profile = xDocProfileDic.Root;
             string newProfile = textBoxProfile.Text;
             profile.Add(new XElement("profile", newProfile));
-            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTwidthDic.xml");
+            xDocProfileDic.Save("D:\\Downloads\\C#\\tyre calculator\\TESTprofileDic.xml");
             textBoxProfile.Clear();
             textBoxProfile.Enabled = false;
         }
