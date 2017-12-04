@@ -20,7 +20,7 @@ namespace TyreCalculator
             /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
-            xDocWidthDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\widthDic.xml");
+            xDocWidthDic = XDocument.Load("widthDic.xml");
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
                          select widths;
             foreach (XElement widthElemen in orderedWidth)
@@ -29,7 +29,7 @@ namespace TyreCalculator
                 newWidthComboBox.Items.Add(widthElemen.Value);
             }
 
-            xDocProfileDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\profileDic.xml");
+            xDocProfileDic = XDocument.Load("profileDic.xml");
             var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
                                select profiles;
             foreach (XElement profileElement in orderedProfile)
@@ -38,7 +38,7 @@ namespace TyreCalculator
                 newProfileComboBox.Items.Add(profileElement.Value);
             }
 
-            xWheelSizeDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\wheelSizeDic.xml");
+            xWheelSizeDic = XDocument.Load("wheelSizeDic.xml");
             var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
                                    select wheelSizes;
             foreach (XElement wheelElement in orderedWheelSize)
@@ -47,7 +47,7 @@ namespace TyreCalculator
                 newWheelSizeComboBox.Items.Add(wheelElement.Value);
             }
 
-            xDocModelDic = XDocument.Load("D:\\Downloads\\C#\\tyre calculator\\byModelDic.xml");
+            xDocModelDic = XDocument.Load("byModelDic.xml");
             IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
                                    select brands;
 
@@ -87,6 +87,7 @@ namespace TyreCalculator
             //labelSpeed160.Tag = 160;
             //labelSpeed170.Tag = 170;
             //labelSpeed180.Tag = 180;
+            pic = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
         }
 
         /// <summary>
@@ -116,6 +117,10 @@ namespace TyreCalculator
         Double percentChange;
 
         Speed Speedo;
+
+        Bitmap pic;
+
+        Graphics g;
 
         //Отработка события изменения значений ComboBox
         private void CmbBox_Change(object sender, EventArgs e)
@@ -234,13 +239,17 @@ namespace TyreCalculator
                 labelSpeed160.Text = strDigs[15];
                 labelSpeed170.Text = strDigs[16];
                 labelSpeed180.Text = strDigs[17];
+                int offset = 6;
+                int halfX = pictureBox1.Size.Width / 2, halfY = pictureBox1.Size.Height /2;
+                int radiusOfTyre = ((int)tyre1.TyreDiametr() / 2) / 2, radiusOfWheel = (int)((tyre1.WheelSize * 25.4) / 2) / 2;
+                int radiusOfTyre2 = ((int)tyre2.TyreDiametr() / 2) / 2, radiusOfWheel2 = (int)((tyre2.WheelSize * 25.4) / 2) / 2;
+                g = pictureBox1.CreateGraphics();
+                g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfTyre, (halfY) - radiusOfTyre, (Int32)tyre1.TyreDiametr() / 2, (Int32)tyre1.TyreDiametr() / 2, 90, 180);
+                g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfWheel, (halfY) - radiusOfWheel, (Int32)(tyre1.WheelSize * 25.4) / 2, (Int32)(tyre1.WheelSize * 25.4) / 2, 90, 180);
+                g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfTyre2, (halfY) - radiusOfTyre2, (Int32)tyre2.TyreDiametr() / 2, (Int32)tyre2.TyreDiametr() / 2, 270, 180);
+                g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfWheel2, (halfY) - radiusOfWheel2, (Int32)(tyre2.WheelSize * 25.4) / 2, (Int32)(tyre2.WheelSize * 25.4) / 2, 270, 180);
             }
-        }
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            //e.Graphics.DrawArc(new Pen(Brushes.Red), 10, 10, 150, 150, 90, 180);
-            //e.Graphics.DrawArc(new Pen(Brushes.Red), 160, 10, 175, 175, 90, 180);
         }
 
         private void brandComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,6 +368,11 @@ namespace TyreCalculator
         {
             DicEditorTree dicEditorTree = new DicEditorTree();
             dicEditorTree.Show();
+        }
+
+        private void exitStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

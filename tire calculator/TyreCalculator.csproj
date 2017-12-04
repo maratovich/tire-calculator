@@ -51,6 +51,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Array.cs" />
     <Compile Include="DicEditor.cs">
       <SubType>Form</SubType>
     </Compile>

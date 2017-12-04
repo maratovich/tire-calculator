@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Диаметр",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ширина",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Длина окружности",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Высота профиля",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Оборотов на км",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Изменение клиренса\t",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
@@ -102,7 +102,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.settingslStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dictionarySetStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveConfStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savePdftoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -125,6 +124,7 @@
             this.labelSpeed170 = new System.Windows.Forms.Label();
             this.labelSpeed180 = new System.Windows.Forms.Label();
             this.titleLabelSpeed = new System.Windows.Forms.Label();
+            this.exitStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -141,7 +141,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(406, 300);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // label7
             // 
@@ -173,12 +172,12 @@
             this.listView1.GridLines = true;
             this.listView1.HoverSelection = true;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6});
             this.listView1.Location = new System.Drawing.Point(14, 171);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
@@ -532,8 +531,8 @@
             // 
             this.settingslStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dictionarySetStripMenuItem,
-            this.saveConfStripMenuItem,
-            this.savePdftoolStripMenuItem});
+            this.savePdftoolStripMenuItem,
+            this.exitStripMenuItem});
             this.settingslStripMenuItem.Name = "settingslStripMenuItem";
             this.settingslStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.settingslStripMenuItem.Text = "Настройки";
@@ -544,12 +543,6 @@
             this.dictionarySetStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.dictionarySetStripMenuItem.Text = "Редактор справочников";
             this.dictionarySetStripMenuItem.Click += new System.EventHandler(this.dictionarySetStripMenuItem_Click);
-            // 
-            // saveConfStripMenuItem
-            // 
-            this.saveConfStripMenuItem.Name = "saveConfStripMenuItem";
-            this.saveConfStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.saveConfStripMenuItem.Text = "Сохранить параметры";
             // 
             // savePdftoolStripMenuItem
             // 
@@ -580,7 +573,7 @@
             this.labelSpeed10.AutoSize = true;
             this.labelSpeed10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed10.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed10.Location = new System.Drawing.Point(463, 511);
+            this.labelSpeed10.Location = new System.Drawing.Point(456, 511);
             this.labelSpeed10.Name = "labelSpeed10";
             this.labelSpeed10.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed10.TabIndex = 32;
@@ -592,7 +585,7 @@
             this.labelSpeed20.AutoSize = true;
             this.labelSpeed20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed20.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed20.Location = new System.Drawing.Point(452, 487);
+            this.labelSpeed20.Location = new System.Drawing.Point(445, 487);
             this.labelSpeed20.Name = "labelSpeed20";
             this.labelSpeed20.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed20.TabIndex = 33;
@@ -604,7 +597,7 @@
             this.labelSpeed30.AutoSize = true;
             this.labelSpeed30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed30.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed30.Location = new System.Drawing.Point(451, 458);
+            this.labelSpeed30.Location = new System.Drawing.Point(444, 458);
             this.labelSpeed30.Name = "labelSpeed30";
             this.labelSpeed30.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed30.TabIndex = 34;
@@ -615,7 +608,7 @@
             this.labelSpeed40.AutoSize = true;
             this.labelSpeed40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed40.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed40.Location = new System.Drawing.Point(455, 431);
+            this.labelSpeed40.Location = new System.Drawing.Point(448, 431);
             this.labelSpeed40.Name = "labelSpeed40";
             this.labelSpeed40.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed40.TabIndex = 35;
@@ -626,7 +619,7 @@
             this.labelSpeed50.AutoSize = true;
             this.labelSpeed50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed50.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed50.Location = new System.Drawing.Point(464, 404);
+            this.labelSpeed50.Location = new System.Drawing.Point(457, 404);
             this.labelSpeed50.Name = "labelSpeed50";
             this.labelSpeed50.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed50.TabIndex = 36;
@@ -637,7 +630,7 @@
             this.labelSpeed60.AutoSize = true;
             this.labelSpeed60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed60.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed60.Location = new System.Drawing.Point(478, 377);
+            this.labelSpeed60.Location = new System.Drawing.Point(471, 377);
             this.labelSpeed60.Name = "labelSpeed60";
             this.labelSpeed60.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed60.TabIndex = 37;
@@ -648,7 +641,7 @@
             this.labelSpeed70.AutoSize = true;
             this.labelSpeed70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed70.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed70.Location = new System.Drawing.Point(503, 357);
+            this.labelSpeed70.Location = new System.Drawing.Point(495, 357);
             this.labelSpeed70.Name = "labelSpeed70";
             this.labelSpeed70.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed70.TabIndex = 38;
@@ -659,7 +652,7 @@
             this.labelSpeed80.AutoSize = true;
             this.labelSpeed80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed80.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed80.Location = new System.Drawing.Point(538, 341);
+            this.labelSpeed80.Location = new System.Drawing.Point(529, 339);
             this.labelSpeed80.Name = "labelSpeed80";
             this.labelSpeed80.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed80.TabIndex = 39;
@@ -670,7 +663,7 @@
             this.labelSpeed90.AutoSize = true;
             this.labelSpeed90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed90.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed90.Location = new System.Drawing.Point(579, 334);
+            this.labelSpeed90.Location = new System.Drawing.Point(572, 334);
             this.labelSpeed90.Name = "labelSpeed90";
             this.labelSpeed90.Size = new System.Drawing.Size(23, 15);
             this.labelSpeed90.TabIndex = 40;
@@ -681,7 +674,7 @@
             this.labelSpeed100.AutoSize = true;
             this.labelSpeed100.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed100.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed100.Location = new System.Drawing.Point(619, 341);
+            this.labelSpeed100.Location = new System.Drawing.Point(617, 339);
             this.labelSpeed100.Name = "labelSpeed100";
             this.labelSpeed100.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed100.TabIndex = 41;
@@ -692,7 +685,7 @@
             this.labelSpeed110.AutoSize = true;
             this.labelSpeed110.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed110.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed110.Location = new System.Drawing.Point(647, 357);
+            this.labelSpeed110.Location = new System.Drawing.Point(648, 357);
             this.labelSpeed110.Name = "labelSpeed110";
             this.labelSpeed110.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed110.TabIndex = 42;
@@ -703,7 +696,7 @@
             this.labelSpeed120.AutoSize = true;
             this.labelSpeed120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed120.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed120.Location = new System.Drawing.Point(673, 377);
+            this.labelSpeed120.Location = new System.Drawing.Point(666, 377);
             this.labelSpeed120.Name = "labelSpeed120";
             this.labelSpeed120.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed120.TabIndex = 43;
@@ -714,7 +707,7 @@
             this.labelSpeed130.AutoSize = true;
             this.labelSpeed130.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed130.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed130.Location = new System.Drawing.Point(691, 404);
+            this.labelSpeed130.Location = new System.Drawing.Point(684, 404);
             this.labelSpeed130.Name = "labelSpeed130";
             this.labelSpeed130.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed130.TabIndex = 44;
@@ -725,7 +718,7 @@
             this.labelSpeed140.AutoSize = true;
             this.labelSpeed140.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed140.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed140.Location = new System.Drawing.Point(700, 431);
+            this.labelSpeed140.Location = new System.Drawing.Point(693, 431);
             this.labelSpeed140.Name = "labelSpeed140";
             this.labelSpeed140.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed140.TabIndex = 45;
@@ -736,7 +729,7 @@
             this.labelSpeed150.AutoSize = true;
             this.labelSpeed150.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed150.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed150.Location = new System.Drawing.Point(702, 458);
+            this.labelSpeed150.Location = new System.Drawing.Point(695, 458);
             this.labelSpeed150.Name = "labelSpeed150";
             this.labelSpeed150.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed150.TabIndex = 46;
@@ -747,7 +740,7 @@
             this.labelSpeed160.AutoSize = true;
             this.labelSpeed160.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed160.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed160.Location = new System.Drawing.Point(700, 487);
+            this.labelSpeed160.Location = new System.Drawing.Point(693, 487);
             this.labelSpeed160.Name = "labelSpeed160";
             this.labelSpeed160.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed160.TabIndex = 47;
@@ -758,7 +751,7 @@
             this.labelSpeed170.AutoSize = true;
             this.labelSpeed170.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed170.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed170.Location = new System.Drawing.Point(691, 511);
+            this.labelSpeed170.Location = new System.Drawing.Point(684, 511);
             this.labelSpeed170.Name = "labelSpeed170";
             this.labelSpeed170.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed170.TabIndex = 48;
@@ -769,7 +762,7 @@
             this.labelSpeed180.AutoSize = true;
             this.labelSpeed180.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSpeed180.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelSpeed180.Location = new System.Drawing.Point(673, 536);
+            this.labelSpeed180.Location = new System.Drawing.Point(666, 536);
             this.labelSpeed180.Name = "labelSpeed180";
             this.labelSpeed180.Size = new System.Drawing.Size(31, 15);
             this.labelSpeed180.TabIndex = 49;
@@ -784,6 +777,13 @@
             this.titleLabelSpeed.Size = new System.Drawing.Size(160, 34);
             this.titleLabelSpeed.TabIndex = 50;
             this.titleLabelSpeed.Text = "Изменение показаний \r\nспидометра:";
+            // 
+            // exitStripMenuItem
+            // 
+            this.exitStripMenuItem.Name = "exitStripMenuItem";
+            this.exitStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.exitStripMenuItem.Text = "Выход";
+            this.exitStripMenuItem.Click += new System.EventHandler(this.exitStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -886,7 +886,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem settingslStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dictionarySetStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveConfStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem savePdftoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -909,6 +908,7 @@
         private System.Windows.Forms.Label labelSpeed170;
         private System.Windows.Forms.Label labelSpeed180;
         private System.Windows.Forms.Label titleLabelSpeed;
+        private System.Windows.Forms.ToolStripMenuItem exitStripMenuItem;
     }
 }
 
