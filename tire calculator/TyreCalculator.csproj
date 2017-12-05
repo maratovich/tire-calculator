@@ -58,8 +58,6 @@
     <Compile Include="DicEditorTree.Designer.cs">
       <DependentUpon>DicEditorTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\DrawHalfCircle.cs" />
-    <Compile Include="Model\ElementsToList.cs" />
     <Compile Include="Model\TyreParams.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

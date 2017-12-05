@@ -293,19 +293,6 @@ namespace TyreCalculator
             }
         }
 
-        private void treeView1_Click(object sender, EventArgs e)
-        {
-            //treeView1.Tag = treeView1.SelectedNode.Text;
-            //treeView1.LabelEdit = true;
-        }
-
-        private void treeView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            //treeView1.Tag = treeView1.SelectedNode.Text;
-            //treeView1.LabelEdit = true;
-        }
-
-
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             if (e.Label != null)
@@ -379,7 +366,7 @@ namespace TyreCalculator
                         };
                         break;
                 }
-                xDocModelDic.Save("TESTbyModelDic.xml");
+                xDocModelDic.Save("byModelDic.xml");
             }
         }
 
@@ -487,8 +474,16 @@ namespace TyreCalculator
                     }
                 }
             }
-            xDoc.Save("TESTbyModelDic.xml");
+            xDoc.Save("byModelDic.xml");
+            tyreSizesTextBoxEd.Clear();
             CreatTreeView();
+            //brandComboBoxEd.SelectedIndex = -1;
+            //modelComboBoxEd.SelectedIndex = -1;
+            //modelComboBoxEd.Items.Clear();
+            //yearComboBoxEd.SelectedIndex = -1;
+            //yearComboBoxEd.Items.Clear();
+            //engineComboBoxEd.SelectedIndex = -1;
+            //engineComboBoxEd.Items.Clear();
         }
 
         private void buttonDelTreeGroup_Click(object sender, EventArgs e)
@@ -512,7 +507,7 @@ namespace TyreCalculator
                     }
                 }
             }
-            xDoc.Save("TESTbyModelDic.xml");
+            xDoc.Save("byModelDic.xml");
             CreatTreeView();
         }
 
@@ -520,6 +515,19 @@ namespace TyreCalculator
         private void CreatTreeView()
         {
             treeView1.Nodes.Clear();
+            brandComboBoxEd.Items.Clear();
+            brandComboBoxEd.Text = "";
+            brandComboBoxEd.SelectedIndex = -1;
+            modelComboBoxEd.Items.Clear();
+            modelComboBoxEd.Text = "";
+            modelComboBoxEd.SelectedIndex = -1;
+            yearComboBoxEd.Items.Clear();
+            yearComboBoxEd.Text = "";
+            yearComboBoxEd.SelectedIndex = -1;
+            engineComboBoxEd.Items.Clear();
+            engineComboBoxEd.Text = "";
+            engineComboBoxEd.SelectedIndex = -1;
+
             foreach (XElement brand in xDocModelDic.Root.Elements())
             {
                 TreeNode brandNode = new TreeNode(brand.Attribute("name").Value);
@@ -557,8 +565,16 @@ namespace TyreCalculator
         }
 
         //Метод заполнения вкладок "Широина профиля", "Высота профиля", "Посадочные размеры"
-        private void FillListBoxe()
+        private void FillListBoxes()
         {
+            listBoxWidths.Items.Clear();
+            listBoxProfiles.Items.Clear();
+            listBoxWheelSize.Items.Clear();
+            brandComboBoxEd.Items.Clear();
+            modelComboBoxEd.Items.Clear();
+            yearComboBoxEd.Items.Clear();
+            engineComboBoxEd.Items.Clear();
+
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
                                select widths;
             foreach (XElement widthElemen in orderedWidth)
@@ -583,8 +599,7 @@ namespace TyreCalculator
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //treeView1.SelectedNode.Remove();
-            IEnumerable<XElement> brands = xDocModelDic.Root.Elements("brand");
+             IEnumerable<XElement> brands = xDocModelDic.Root.Elements("brand");
             switch (treeView1.SelectedNode.Tag)
             {
                 case 0:
@@ -652,7 +667,8 @@ namespace TyreCalculator
                     };
                     break;
             }
-            xDocModelDic.Save("TESTbyModelDic.xml");
+            xDocModelDic.Save("byModelDic.xml");
+            CreatTreeView();
         }
 
         private void textBoxWidth_TextChanged(object sender, EventArgs e)
@@ -695,6 +711,27 @@ namespace TyreCalculator
                 buttonAddWheelSize.Enabled = false;
                 buttonEditWheelSize.Enabled = false;
             }
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                treeView1.SelectedNode = e.Node;
+                this.contextMenuStrip1.Show(treeView1, e.Location);
+                treeView1.Tag = treeView1.SelectedNode.Text;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            brandComboBoxEd.SelectedIndex = -1;
+            modelComboBoxEd.SelectedIndex = -1;
+            modelComboBoxEd.Items.Clear();
+            yearComboBoxEd.SelectedIndex = -1;
+            yearComboBoxEd.Items.Clear();
+            engineComboBoxEd.SelectedIndex = -1;
+            engineComboBoxEd.Items.Clear();
         }
     }
 }

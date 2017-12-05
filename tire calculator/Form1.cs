@@ -20,44 +20,42 @@ namespace TyreCalculator
             /*Заполняем все 6-ть полей ComboBox данными содержащимися в XML файлах widthDic.XML, profileDic.XML, wheelSizeDic.XML:
              ширина профиля, высота и посадочный диаметр из XML файлов:
             */
-            xDocWidthDic = XDocument.Load("widthDic.xml");
-            var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
-                               select widths;
-            foreach (XElement widthElemen in orderedWidth)
-            {
-                widthComboBox.Items.Add(widthElemen.Value);
-                newWidthComboBox.Items.Add(widthElemen.Value);
-            }
+            //xDocWidthDic = XDocument.Load("widthDic.xml");
+            //var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
+            //                   select widths;
+            //foreach (XElement widthElemen in orderedWidth)
+            //{
+            //    widthComboBox.Items.Add(widthElemen.Value);
+            //    newWidthComboBox.Items.Add(widthElemen.Value);
+            //}
 
-            xDocProfileDic = XDocument.Load("profileDic.xml");
-            var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
-                                 select profiles;
-            foreach (XElement profileElement in orderedProfile)
-            {
-                profileComboBox.Items.Add(profileElement.Value);
-                newProfileComboBox.Items.Add(profileElement.Value);
-            }
+            //xDocProfileDic = XDocument.Load("profileDic.xml");
+            //var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
+            //                     select profiles;
+            //foreach (XElement profileElement in orderedProfile)
+            //{
+            //    profileComboBox.Items.Add(profileElement.Value);
+            //    newProfileComboBox.Items.Add(profileElement.Value);
+            //}
 
-            xWheelSizeDic = XDocument.Load("wheelSizeDic.xml");
-            var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
-                                   select wheelSizes;
-            foreach (XElement wheelElement in orderedWheelSize)
-            {
-                wheelSizeComboBox.Items.Add(wheelElement.Value);
-                newWheelSizeComboBox.Items.Add(wheelElement.Value);
-            }
+            //xWheelSizeDic = XDocument.Load("wheelSizeDic.xml");
+            //var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
+            //                       select wheelSizes;
+            //foreach (XElement wheelElement in orderedWheelSize)
+            //{
+            //    wheelSizeComboBox.Items.Add(wheelElement.Value);
+            //    newWheelSizeComboBox.Items.Add(wheelElement.Value);
+            //}
 
-            xDocModelDic = XDocument.Load("byModelDic.xml");
-            IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
-                                          select brands;
+            //xDocModelDic = XDocument.Load("byModelDic.xml");
+            //IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
+            //                              select brands;
 
-            // Разобрать класс XNodeDocumentOrderComparer сортировка по бренду
-            foreach (XElement modelElement in brand)
-            {
-                //XAttribute nameAttribute = modelElement.Attribute("name");
-                brandComboBox.Items.Add(modelElement.Attribute("name").Value);
-            }
-
+            //foreach (XElement modelElement in brand)
+            //{
+            //    brandComboBox.Items.Add(modelElement.Attribute("name").Value);
+            //}
+            UpDateComboBoxes();
             listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //авторазмер по ширине текста
             listView2.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             listView1.Items[0].UseItemStyleForSubItems = false;
@@ -69,25 +67,6 @@ namespace TyreCalculator
             {
                 listView1.Items[i].UseItemStyleForSubItems = false;
             }
-            //labelSpeed10.Tag = 10;
-            //labelSpeed20.Tag = 20;
-            //labelSpeed30.Tag = 30;
-            //labelSpeed40.Tag = 40;
-            //labelSpeed50.Tag = 50;
-            //labelSpeed60.Tag = 60;
-            //labelSpeed70.Tag = 70;
-            //labelSpeed80.Tag = 80;
-            //labelSpeed90.Tag = 90;
-            //labelSpeed100.Tag = 100;
-            //labelSpeed110.Tag = 110;
-            //labelSpeed120.Tag = 120;
-            //labelSpeed130.Tag = 130;
-            //labelSpeed140.Tag = 140;
-            //labelSpeed150.Tag = 150;
-            //labelSpeed160.Tag = 160;
-            //labelSpeed170.Tag = 170;
-            //labelSpeed180.Tag = 180;
-            pic = new Bitmap(pictureBox1.Size.Width, pictureBox1.Size.Height);
         }
 
         /// <summary>
@@ -117,8 +96,6 @@ namespace TyreCalculator
         Double percentChange;
 
         Speed Speedo;
-
-        Bitmap pic;
 
         Graphics g;
 
@@ -425,6 +402,7 @@ namespace TyreCalculator
         private void clearButton_Click(object sender, EventArgs e)
         {
             brandComboBox.SelectedIndex = -1;
+            brandComboBox.Items.Clear();
             modelComboBox.SelectedIndex = -1;
             modelComboBox.Items.Clear();
             yearComboBox.SelectedIndex = -1;
@@ -451,13 +429,70 @@ namespace TyreCalculator
         private void dictionarySetStripMenuItem_Click(object sender, EventArgs e)
         {
             DicEditorTree dicEditorTree = new DicEditorTree();
-            dicEditorTree.Owner = this;
             dicEditorTree.Show();
         }
 
         private void exitStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //brandComboBox.SelectedIndex = -1;
+            brandComboBox.Items.Clear();
+            //modelComboBox.SelectedIndex = -1;
+            modelComboBox.Items.Clear();
+            //yearComboBox.SelectedIndex = -1;
+            yearComboBox.Items.Clear();
+            //engineComboBox.SelectedIndex = -1;
+            engineComboBox.Items.Clear();
+            widthComboBox.Items.Clear();
+            profileComboBox.Items.Clear();
+            wheelSizeComboBox.Items.Clear();
+            newWidthComboBox.Items.Clear();
+            newProfileComboBox.Items.Clear();
+            newWheelSizeComboBox.Items.Clear();
+            UpDateComboBoxes();
+        }
+
+        private void UpDateComboBoxes()
+        {
+            xDocWidthDic = XDocument.Load("widthDic.xml");
+            var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
+                               select widths;
+            foreach (XElement widthElemen in orderedWidth)
+            {
+                widthComboBox.Items.Add(widthElemen.Value);
+                newWidthComboBox.Items.Add(widthElemen.Value);
+            }
+
+            xDocProfileDic = XDocument.Load("profileDic.xml");
+            var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
+                                 select profiles;
+            foreach (XElement profileElement in orderedProfile)
+            {
+                profileComboBox.Items.Add(profileElement.Value);
+                newProfileComboBox.Items.Add(profileElement.Value);
+            }
+
+            xWheelSizeDic = XDocument.Load("wheelSizeDic.xml");
+            var orderedWheelSize = from wheelSizes in xWheelSizeDic.Root.Elements("size")
+                                   select wheelSizes;
+            foreach (XElement wheelElement in orderedWheelSize)
+            {
+                wheelSizeComboBox.Items.Add(wheelElement.Value);
+                newWheelSizeComboBox.Items.Add(wheelElement.Value);
+            }
+
+            xDocModelDic = XDocument.Load("byModelDic.xml");
+            IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
+                                          select brands;
+
+            foreach (XElement modelElement in brand)
+            {
+                brandComboBox.Items.Add(modelElement.Attribute("name").Value);
+            }
         }
     }
 }

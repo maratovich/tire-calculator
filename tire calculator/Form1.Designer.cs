@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Диаметр",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Ширина",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "Длина окружности",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "Высота профиля",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Оборотов на км",
             "",
             "",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Изменение клиренса\t",
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204))));
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label8 = new System.Windows.Forms.Label();
             this.brandComboBox = new System.Windows.Forms.ComboBox();
@@ -130,6 +130,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -141,7 +142,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 17);
+            this.label8.Location = new System.Drawing.Point(3, 17);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 20;
@@ -161,7 +162,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(133, 17);
+            this.label9.Location = new System.Drawing.Point(130, 17);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 22;
@@ -181,7 +182,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 65);
+            this.label10.Location = new System.Drawing.Point(3, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 13);
             this.label10.TabIndex = 24;
@@ -201,7 +202,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(260, 17);
+            this.label11.Location = new System.Drawing.Point(257, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(71, 13);
             this.label11.TabIndex = 26;
@@ -221,7 +222,7 @@
             // addButton
             // 
             this.addButton.Enabled = false;
-            this.addButton.Location = new System.Drawing.Point(136, 82);
+            this.addButton.Location = new System.Drawing.Point(133, 82);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(118, 23);
             this.addButton.TabIndex = 26;
@@ -231,7 +232,7 @@
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(263, 82);
+            this.clearButton.Location = new System.Drawing.Point(257, 82);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(118, 23);
             this.clearButton.TabIndex = 28;
@@ -266,7 +267,7 @@
             // 
             this.profileComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.profileComboBox.FormattingEnabled = true;
-            this.profileComboBox.Location = new System.Drawing.Point(136, 32);
+            this.profileComboBox.Location = new System.Drawing.Point(133, 32);
             this.profileComboBox.Name = "profileComboBox";
             this.profileComboBox.Size = new System.Drawing.Size(121, 21);
             this.profileComboBox.Sorted = true;
@@ -294,7 +295,7 @@
             // 
             this.wheelSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.wheelSizeComboBox.FormattingEnabled = true;
-            this.wheelSizeComboBox.Location = new System.Drawing.Point(271, 33);
+            this.wheelSizeComboBox.Location = new System.Drawing.Point(260, 32);
             this.wheelSizeComboBox.Name = "wheelSizeComboBox";
             this.wheelSizeComboBox.Size = new System.Drawing.Size(121, 21);
             this.wheelSizeComboBox.Sorted = true;
@@ -315,7 +316,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(276, 17);
+            this.label3.Location = new System.Drawing.Point(257, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 13);
             this.label3.TabIndex = 18;
@@ -324,7 +325,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 16);
+            this.label1.Location = new System.Drawing.Point(6, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 14;
@@ -333,7 +334,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(143, 16);
+            this.label2.Location = new System.Drawing.Point(130, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 16;
@@ -373,16 +374,16 @@
             this.listView1.GridLines = true;
             this.listView1.HoverSelection = true;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
-            this.listView1.Location = new System.Drawing.Point(14, 171);
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13});
+            this.listView1.Location = new System.Drawing.Point(12, 167);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(404, 132);
+            this.listView1.Size = new System.Drawing.Size(406, 132);
             this.listView1.TabIndex = 23;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -398,7 +399,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(143, 17);
+            this.label6.Location = new System.Drawing.Point(130, 17);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 16;
@@ -408,7 +409,7 @@
             // 
             this.newProfileComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.newProfileComboBox.FormattingEnabled = true;
-            this.newProfileComboBox.Location = new System.Drawing.Point(136, 33);
+            this.newProfileComboBox.Location = new System.Drawing.Point(133, 33);
             this.newProfileComboBox.Name = "newProfileComboBox";
             this.newProfileComboBox.Size = new System.Drawing.Size(121, 21);
             this.newProfileComboBox.Sorted = true;
@@ -418,7 +419,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 15);
+            this.label5.Location = new System.Drawing.Point(6, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 14;
@@ -427,7 +428,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(276, 17);
+            this.label4.Location = new System.Drawing.Point(257, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 13);
             this.label4.TabIndex = 18;
@@ -448,7 +449,7 @@
             // 
             this.newWheelSizeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.newWheelSizeComboBox.FormattingEnabled = true;
-            this.newWheelSizeComboBox.Location = new System.Drawing.Point(271, 33);
+            this.newWheelSizeComboBox.Location = new System.Drawing.Point(260, 33);
             this.newWheelSizeComboBox.Name = "newWheelSizeComboBox";
             this.newWheelSizeComboBox.Size = new System.Drawing.Size(121, 21);
             this.newWheelSizeComboBox.Sorted = true;
@@ -474,6 +475,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settingslStripMenuItem,
+            this.toolStripMenuItem1,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -525,7 +527,7 @@
             this.columnHeader18});
             this.listView2.GridLines = true;
             this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7});
+            listViewItem14});
             this.listView2.Location = new System.Drawing.Point(439, 171);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(438, 132);
@@ -803,6 +805,13 @@
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(73, 20);
+            this.toolStripMenuItem1.Text = "Обновить";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -931,6 +940,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
