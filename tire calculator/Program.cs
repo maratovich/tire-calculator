@@ -16,8 +16,8 @@ namespace TyreCalculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Application.Run(new DicEditorTree /*MainForm*/());
+            Application.Run(new MainForm());
+            //Application.Run(new DicEditorTree /*MainForm*/());
         }
     }
 }

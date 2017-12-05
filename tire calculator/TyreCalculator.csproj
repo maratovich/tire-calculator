@@ -52,23 +52,11 @@
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Array.cs" />
-    <Compile Include="DicEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DicEditor.Designer.cs">
-      <DependentUpon>DicEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="DicEditorTree.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DicEditorTree.Designer.cs">
       <DependentUpon>DicEditorTree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModelAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModelAddForm.Designer.cs">
-      <DependentUpon>ModelAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DrawHalfCircle.cs" />
     <Compile Include="Model\ElementsToList.cs" />
@@ -84,17 +72,11 @@
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DicEditor.resx">
-      <DependentUpon>DicEditor.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DicEditorTree.resx">
       <DependentUpon>DicEditorTree.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModelAddForm.resx">
-      <DependentUpon>ModelAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

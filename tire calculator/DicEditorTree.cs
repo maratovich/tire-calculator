@@ -25,7 +25,6 @@ namespace TyreCalculator
         bool yearFlag;
         bool engineFlag;
 
-
         public DicEditorTree()
         {
             InitializeComponent();
@@ -53,6 +52,7 @@ namespace TyreCalculator
             }
         }
 
+        //Обработчики событий на вкладке "Ширина профиля"
         private void buttonEditWidth_Click(object sender, EventArgs e)
         {
             string editingWidth = textBoxWidth.Text;
@@ -62,10 +62,9 @@ namespace TyreCalculator
                 if (widthElemen.Value == listBoxWidths.SelectedItem.ToString()) widthElemen.Value = editingWidth;
 
             }
-            xDocWidthDic.Save("TESTwidthDic.xml");
+            listBoxWidths.Items[listBoxWidths.SelectedIndex] = textBoxWidth.Text;
+            xDocWidthDic.Save("widthDic.xml");
             textBoxWidth.Clear();
-            textBoxWidth.Enabled = false;
-
         }
 
         private void buttonDelWidth_Click(object sender, EventArgs e)
@@ -76,7 +75,8 @@ namespace TyreCalculator
                 if (widthElemen.Value == listBoxWidths.SelectedItem.ToString()) widthElemen.Remove();
 
             }
-            xDocWidthDic.Save("TESTwidthDic.xml");
+            listBoxWidths.Items.Remove(listBoxWidths.SelectedItem);
+            xDocWidthDic.Save("widthDic.xml");
         }
 
         private void buttonAddWidth_Click(object sender, EventArgs e)
@@ -84,10 +84,10 @@ namespace TyreCalculator
             XElement width = xDocWidthDic.Root;
             string newWidth = textBoxWidth.Text;
             width.Add(new XElement("width", newWidth));
-            xDocWidthDic.Save("TESTwidthDic.xml");
+            listBoxWidths.Items.Add(newWidth);
+            xDocWidthDic.Save("widthDic.xml");
             textBoxWidth.Clear();
             textBoxWidth.Enabled = false;
-
         }
 
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -100,8 +100,6 @@ namespace TyreCalculator
         private void listBoxWidths_SelectedValueChanged(object sender, EventArgs e)
         {
             textBoxWidth.Enabled = true;
-            buttonAddWidth.Enabled = true;
-            buttonEditWidth.Enabled = true;
             buttonDelWidth.Enabled = true;
         }
         //Обработчики событий на вкладке "Высота профиля"
@@ -114,9 +112,9 @@ namespace TyreCalculator
                 if (profileElemen.Value == listBoxProfiles.SelectedItem.ToString()) profileElemen.Value = editingProfile;
 
             }
-            xDocProfileDic.Save("TESTprofileDic.xml");
+            listBoxProfiles.Items[listBoxProfiles.SelectedIndex] = textBoxWidth.Text;
+            xDocProfileDic.Save("profileDic.xml");
             textBoxProfile.Clear();
-            textBoxProfile.Enabled = false;
         }
 
         private void buttonDelProfile_Click(object sender, EventArgs e)
@@ -127,7 +125,8 @@ namespace TyreCalculator
                 if (profileElemen.Value == listBoxProfiles.SelectedItem.ToString()) profileElemen.Remove();
 
             }
-            xDocProfileDic.Save("TESTprofileDic.xml");
+            listBoxProfiles.Items.Remove(listBoxProfiles.SelectedItem);
+            xDocProfileDic.Save("profileDic.xml");
         }
 
         private void buttonAddProfile_Click(object sender, EventArgs e)
@@ -135,17 +134,16 @@ namespace TyreCalculator
             XElement profile = xDocProfileDic.Root;
             string newProfile = textBoxProfile.Text;
             profile.Add(new XElement("profile", newProfile));
-            xDocProfileDic.Save("TESTprofileDic.xml");
+            listBoxProfiles.Items.Add(newProfile);
+            xDocProfileDic.Save("profileDic.xml");
             textBoxProfile.Clear();
             textBoxProfile.Enabled = false;
         }
 
         private void listBoxProfiles_SelectedValueChanged(object sender, EventArgs e)
         {
-            textBoxProfile.Enabled = true;
-            buttonAddProfile.Enabled = true;
-            buttonEditProfile.Enabled = true;
             buttonDelProfile.Enabled = true;
+            textBoxProfile.Enabled = true;
         }
         //Обработчики событий на вкладке "Посадочные размеры"
         private void buttonEditWheelSize_Click(object sender, EventArgs e)
@@ -157,7 +155,8 @@ namespace TyreCalculator
                 if (profileElemen.Value == listBoxWheelSize.SelectedItem.ToString()) profileElemen.Value = editingWheelSize;
 
             }
-            xWheelSizeDic.Save("TESTwheelSizeDic.xml");
+            listBoxWheelSize.Items[listBoxWheelSize.SelectedIndex] = textBoxWidth.Text;
+            xWheelSizeDic.Save("wheelSizeDic.xml");
             textBoxWheelSize.Clear();
             textBoxWheelSize.Enabled = false;
         }
@@ -170,7 +169,8 @@ namespace TyreCalculator
                 if (profileElemen.Value == listBoxWheelSize.SelectedItem.ToString()) profileElemen.Remove();
 
             }
-            xWheelSizeDic.Save("TESTwheelSizeDic.xml");
+            listBoxWheelSize.Items.Remove(listBoxWheelSize.SelectedItem);
+            xWheelSizeDic.Save("wheelSizeDic.xml");
         }
 
         private void buttonAddWheelSize_Click(object sender, EventArgs e)
@@ -178,17 +178,16 @@ namespace TyreCalculator
             XElement wheelSize = xWheelSizeDic.Root;
             string newWheelSize = textBoxWheelSize.Text;
             wheelSize.Add(new XElement("size", newWheelSize));
-            xWheelSizeDic.Save("TESTwheelSizeDic.xml");
+            listBoxWheelSize.Items.Add(newWheelSize);
+            xWheelSizeDic.Save("wheelSizeDic.xml");
             textBoxWheelSize.Clear();
             textBoxWheelSize.Enabled = false;
         }
 
         private void listBoxWheelSize_SelectedValueChanged(object sender, EventArgs e)
         {
-            textBoxWheelSize.Enabled = true;
-            buttonAddWheelSize.Enabled = true;
-            buttonEditWheelSize.Enabled = true;
             buttonDelWheelSize.Enabled = true;
+            textBoxWheelSize.Enabled = true;
         }
 
         //Обработчки событий вкладка "Автомобили"
@@ -292,8 +291,20 @@ namespace TyreCalculator
             {
                 treeView1.SelectedNode.BeginEdit();
             }
-            //Text = treeView1.SelectedNode.Tag.ToString();
         }
+
+        private void treeView1_Click(object sender, EventArgs e)
+        {
+            //treeView1.Tag = treeView1.SelectedNode.Text;
+            //treeView1.LabelEdit = true;
+        }
+
+        private void treeView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //treeView1.Tag = treeView1.SelectedNode.Text;
+            //treeView1.LabelEdit = true;
+        }
+
 
         private void treeView1_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
@@ -586,63 +597,104 @@ namespace TyreCalculator
                         }
                     };
                     break;
-                //case 1:
-                //    IEnumerable<XElement> models = xDocModelDic.Root.Elements("brand").Elements("model");
-                //    foreach (XElement model in models)
-                //    {
-                //        if (model.Attribute("nick").Value.Equals(treeView1.Tag) && model.Parent.Attribute("name").Value.Equals(treeView1.SelectedNode.Parent.Text))
-                //        {
-                //            model.Attribute("nick").Value = e.Label;
-                //        }
-                //    };
-                //    break;
-                //case 2:
-                //    IEnumerable<XElement> years = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
-                //    //IEnumerable<XElement> years = from xyear in elements
-                //    //                              where xyear.Attribute("year").Equals(treeView1.Tag)
-                //    //                              select xyear;
-                //    foreach (XElement year in years)
-                //    {
-                //        if (year.Attribute("year").Value.Equals(treeView1.Tag) && year.Parent.Attribute("nick").Value.Equals(treeView1.SelectedNode.Parent.Text))
-                //        {
-                //            year.Attribute("year").Value = e.Label;
-                //        }
-                //    };
-                //    break;
-                //case 3:
-                //    IEnumerable<XElement> engines = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
-                //    //IEnumerable<XElement> engines = from xengine in elements
-                //    //                                where xengine.Attribute("year").Equals(treeView1.Tag)
-                //    //                                select xengine;
-                //    foreach (XElement engine in engines)
-                //    {
-                //        if (engine.Element("engine").Value.Equals(treeView1.Tag.ToString().Replace(" двигатель", "")) && engine.Attribute("year").Value.Equals(treeView1.SelectedNode.Parent.Text))
-                //        {
-                //            engine.Element("engine").Value = e.Label;
-                //        }
-                //    };
-                //    break;
-                //case 4:
-                //    IEnumerable<XElement> tyres = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
-                //    //IEnumerable<XElement> tyres1 = from xtyre in tyres
-                //    //                               where xtyre.Element("tyre_sizes").Value.Equals(treeView1.Tag)
-                //    //                              select xtyre;
-                //    foreach (XElement tyre in tyres)
-                //    {
-                //        foreach (XElement elem in tyre.Elements("tyre_sizes"))
-                //            if (elem.Value.Equals(treeView1.Tag) && tyre.Attribute("year").Value.Equals(treeView1.SelectedNode.Parent.Text))
-                //            {
-                //                elem.Value = e.Label;
-                //            }
-                //    };
-                //    break;
+                case 1:
+                    IEnumerable<XElement> models = xDocModelDic.Root.Elements("brand").Elements("model");
+                    foreach (XElement model in models)
+                    {
+                        if (model.Attribute("nick").Value.Equals(treeView1.Tag) && model.Parent.Attribute("name").Value.Equals(treeView1.SelectedNode.Parent.Text))
+                        {
+                            treeView1.SelectedNode.Remove();
+                            model.Remove();
+                        }
+                    };
+                    break;
+                case 2:
+                    IEnumerable<XElement> years = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
+                    //IEnumerable<XElement> years = from xyear in elements
+                    //                              where xyear.Attribute("year").Equals(treeView1.Tag)
+                    //                              select xyear;
+                    foreach (XElement year in years)
+                    {
+                        if (year.Attribute("year").Value.Equals(treeView1.Tag) && year.Parent.Attribute("nick").Value.Equals(treeView1.SelectedNode.Parent.Text))
+                        {
+                            treeView1.SelectedNode.Remove();
+                            year.Remove();
+                        }
+                    };
+                    break;
+                case 3:
+                    IEnumerable<XElement> engines = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
+                    //IEnumerable<XElement> engines = from xengine in elements
+                    //                                where xengine.Attribute("year").Equals(treeView1.Tag)
+                    //                                select xengine;
+                    foreach (XElement engine in engines)
+                    {
+                        if (engine.Element("engine").Value.Equals(treeView1.Tag.ToString().Replace(" двигатель", "")) && engine.Attribute("year").Value.Equals(treeView1.SelectedNode.Parent.Text))
+                        {
+                            treeView1.SelectedNode.Remove();
+                            engine.Remove();
+                        }
+                    };
+                    break;
+                case 4:
+                    IEnumerable<XElement> tyres = xDocModelDic.Root.Elements("brand").Elements("model").Elements("prod_year");
+                    //IEnumerable<XElement> tyres1 = from xtyre in tyres
+                    //                               where xtyre.Element("tyre_sizes").Value.Equals(treeView1.Tag)
+                    //                              select xtyre;
+                    foreach (XElement tyre in tyres)
+                    {
+                        foreach (XElement elem in tyre.Elements("tyre_sizes"))
+                            if (elem.Value.Equals(treeView1.Tag) && tyre.Attribute("year").Value.Equals(treeView1.SelectedNode.Parent.Text))
+                            {
+                                treeView1.SelectedNode.Remove();
+                                elem.Remove();
+                            }
+                    };
+                    break;
             }
             xDocModelDic.Save("TESTbyModelDic.xml");
         }
 
-        private void treeView1_Click(object sender, EventArgs e)
+        private void textBoxWidth_TextChanged(object sender, EventArgs e)
         {
-            treeView1.Tag = treeView1.SelectedNode.Text;
+            if (textBoxWidth.Text.Length != 0)
+            {
+                buttonAddWidth.Enabled = true;
+                buttonEditWidth.Enabled = true;
+            }
+            else
+            {
+                buttonAddWidth.Enabled = false;
+                buttonEditWidth.Enabled = false;
+            }
+        }
+
+        private void textBoxProfile_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxProfile.Text.Length != 0)
+            {
+                buttonAddProfile.Enabled = true;
+                buttonEditProfile.Enabled = true;
+            }
+            else
+            {
+                buttonAddProfile.Enabled = false;
+                buttonEditProfile.Enabled = false;
+            }
+        }
+
+        private void textBoxWheelSize_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxWheelSize.Text.Length != 0)
+            {
+                buttonAddWheelSize.Enabled = true;
+                buttonEditWheelSize.Enabled = true;
+            }
+            else
+            {
+                buttonAddWheelSize.Enabled = false;
+                buttonEditWheelSize.Enabled = false;
+            }
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TyreCalculator
             */
             xDocWidthDic = XDocument.Load("widthDic.xml");
             var orderedWidth = from widths in xDocWidthDic.Root.Elements("width")
-                         select widths;
+                               select widths;
             foreach (XElement widthElemen in orderedWidth)
             {
                 widthComboBox.Items.Add(widthElemen.Value);
@@ -31,7 +31,7 @@ namespace TyreCalculator
 
             xDocProfileDic = XDocument.Load("profileDic.xml");
             var orderedProfile = from profiles in xDocProfileDic.Root.Elements("profile")
-                               select profiles;
+                                 select profiles;
             foreach (XElement profileElement in orderedProfile)
             {
                 profileComboBox.Items.Add(profileElement.Value);
@@ -49,7 +49,7 @@ namespace TyreCalculator
 
             xDocModelDic = XDocument.Load("byModelDic.xml");
             IEnumerable<XElement> brand = from brands in xDocModelDic.Root.Elements("brand")
-                                   select brands;
+                                          select brands;
 
             // Разобрать класс XNodeDocumentOrderComparer сортировка по бренду
             foreach (XElement modelElement in brand)
@@ -148,71 +148,102 @@ namespace TyreCalculator
             percentChange = new Double();
             if (widthComboBox.SelectedIndex != -1 && profileComboBox.SelectedIndex != -1 && wheelSizeComboBox.SelectedIndex != -1 && newWidthComboBox.SelectedIndex != -1 && newProfileComboBox.SelectedIndex != -1 && newWheelSizeComboBox.SelectedIndex != -1)
             {
-                if (tyre1.TyreDiametr() < tyre2.TyreDiametr())
+                pictureBox1.Refresh();
+                //pictureBox1.Image = null;
+                //pictureBox1.Invalidate();
+                if (tyre1.TyreDiametr() < tyre2.TyreDiametr() && tyre1.TyreDiametr() != tyre2.TyreDiametr())
                 {
                     listView1.Items[0].SubItems[3].ForeColor = Color.Green;
                     listView1.Items[0].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.TyreDiametr() - tyre1.TyreDiametr()));
                     listView1.Items[5].SubItems[1].ForeColor = Color.Green;
-                    listView1.Items[5].SubItems[1].Text = Convert.ToString(Math.Round((tyre2.TyreDiametr() - tyre1.TyreDiametr())/ 2, 2));
+                    listView1.Items[5].SubItems[1].Text = string.Concat(Convert.ToString(Math.Round((tyre2.TyreDiametr() - tyre1.TyreDiametr()) / 2, 2)), " мм");
                     percentChange = Math.Round(((tyre2.TyreDiametr() * 100) / tyre1.TyreDiametr()) - 100, 1);
                     titleLabelSpeed.Text = Convert.ToString(string.Concat("Изменение показаний спидометра:\n", percentChange, " %"));
                 }
-                else
+                if (tyre1.TyreDiametr() > tyre2.TyreDiametr() && tyre1.TyreDiametr() != tyre2.TyreDiametr())
                 {
                     listView1.Items[0].SubItems[3].ForeColor = Color.Red;
-                    listView1.Items[0].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.TyreDiametr() - tyre2.TyreDiametr()));
+                    listView1.Items[0].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.TyreDiametr() - tyre1.TyreDiametr()));
                     listView1.Items[5].SubItems[1].ForeColor = Color.Red;
-                    listView1.Items[5].SubItems[1].Text = Convert.ToString(Math.Round((tyre1.TyreDiametr() - tyre2.TyreDiametr()) / 2, 2));
+                    listView1.Items[5].SubItems[1].Text = string.Concat(Convert.ToString(Math.Round((tyre2.TyreDiametr() - tyre1.TyreDiametr()) / 2, 2)), " мм");
                     percentChange = Math.Round(((tyre2.TyreDiametr() * 100) / tyre1.TyreDiametr()) - 100, 1);
                     titleLabelSpeed.Text = Convert.ToString(string.Concat("Изменение показаний спидометра:\n", percentChange, " %"));
                 }
-                //listView1.Items[0].SubItems[3].Text = Convert.ToString(tyre1.TyreDiametr() - tyre2.TyreDiametr());
-                if (tyre1.TyreWidth < tyre2.TyreWidth)
+                if (tyre1.TyreDiametr() == tyre2.TyreDiametr())
+                {
+                    listView1.Items[0].SubItems[3].ForeColor = Color.Gray;
+                    listView1.Items[0].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.TyreDiametr() - tyre1.TyreDiametr()));
+                    listView1.Items[5].SubItems[1].ForeColor = Color.Gray;
+                    listView1.Items[5].SubItems[1].Text = Convert.ToString(Math.Round((tyre2.TyreDiametr() - tyre1.TyreDiametr()) / 2, 2));
+                    percentChange = Math.Round(((tyre2.TyreDiametr() * 100) / tyre1.TyreDiametr()) - 100, 1);
+                    titleLabelSpeed.Text = Convert.ToString(string.Concat("Изменение показаний спидометра:\n", percentChange, " %"));
+                }
+
+                if (tyre1.TyreWidth < tyre2.TyreWidth && tyre1.TyreWidth != tyre2.TyreWidth)
                 {
                     listView1.Items[1].SubItems[3].ForeColor = Color.Green;
                     listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre2.TyreWidth - tyre1.TyreWidth);
                 }
-                else
+                if (tyre1.TyreWidth > tyre2.TyreWidth && tyre1.TyreWidth != tyre2.TyreWidth)
                 {
                     listView1.Items[1].SubItems[3].ForeColor = Color.Red;
-                    listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre1.TyreWidth - tyre2.TyreWidth);
+                    listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre2.TyreWidth - tyre1.TyreWidth);
                 }
-                //listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre1.TyreWidth - tyre2.TyreWidth);
-                if (tyre1.CircleLenght() < tyre2.CircleLenght())
+
+                if (tyre1.TyreWidth == tyre2.TyreWidth)
+                {
+                    listView1.Items[1].SubItems[3].ForeColor = Color.Gray;
+                    listView1.Items[1].SubItems[3].Text = Convert.ToString(tyre2.TyreWidth - tyre1.TyreWidth);
+                }
+
+                if (tyre1.CircleLenght() < tyre2.CircleLenght() && tyre1.CircleLenght() != tyre2.CircleLenght())
                 {
                     listView1.Items[2].SubItems[3].ForeColor = Color.Green;
                     listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.CircleLenght() - tyre1.CircleLenght()));
                 }
-                else
+
+                if (tyre1.CircleLenght() > tyre2.CircleLenght() && tyre1.CircleLenght() != tyre2.CircleLenght())
                 {
                     listView1.Items[2].SubItems[3].ForeColor = Color.Red;
-                    listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.CircleLenght() - tyre2.CircleLenght()));
+                    listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.CircleLenght() - tyre1.CircleLenght()));
                 }
-                //listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.CircleLenght() - tyre2.CircleLenght()));
-                if (tyre1.SideWall() < tyre2.SideWall())
+                if (tyre1.CircleLenght() == tyre2.CircleLenght())
+                {
+                    listView1.Items[2].SubItems[3].ForeColor = Color.Gray;
+                    listView1.Items[2].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.CircleLenght() - tyre1.CircleLenght()));
+                }
+
+                if (tyre1.SideWall() < tyre2.SideWall() && tyre1.SideWall() != tyre2.SideWall())
                 {
                     listView1.Items[3].SubItems[3].ForeColor = Color.Green;
                     listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre2.SideWall() - tyre1.SideWall());
-                    //listView1.Items[5].SubItems[1].ForeColor = Color.Green;
                 }
-                else
+                if (tyre1.SideWall() > tyre2.SideWall() && tyre1.SideWall() != tyre2.SideWall())
                 {
                     listView1.Items[3].SubItems[3].ForeColor = Color.Red;
-                    listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre1.SideWall() - tyre2.SideWall());
-                    //listView1.Items[5].SubItems[1].ForeColor = Color.Red;
+                    listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre2.SideWall() - tyre1.SideWall());
                 }
-                //listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre1.SideWall() - tyre2.SideWall());
-                if (tyre1.RevsPerKm() < tyre2.RevsPerKm())
+                if (tyre1.SideWall() == tyre2.SideWall())
+                {
+                    listView1.Items[3].SubItems[3].ForeColor = Color.Gray;
+                    listView1.Items[3].SubItems[3].Text = Convert.ToString(tyre2.SideWall() - tyre1.SideWall());
+                }
+
+                if (tyre1.RevsPerKm() < tyre2.RevsPerKm() && tyre1.RevsPerKm() != tyre2.RevsPerKm())
                 {
                     listView1.Items[4].SubItems[3].ForeColor = Color.Green;
                     listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.RevsPerKm() - tyre1.RevsPerKm()));
                 }
-                else
+                if (tyre1.RevsPerKm() > tyre2.RevsPerKm() && tyre1.RevsPerKm() != tyre2.RevsPerKm())
                 {
                     listView1.Items[4].SubItems[3].ForeColor = Color.Red;
-                    listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
+                    listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.RevsPerKm() - tyre1.RevsPerKm()));
                 }
-                //listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre1.RevsPerKm() - tyre2.RevsPerKm()));
+                if (tyre1.RevsPerKm() == tyre2.RevsPerKm())
+                {
+                    listView1.Items[4].SubItems[3].ForeColor = Color.Gray;
+                    listView1.Items[4].SubItems[3].Text = Convert.ToString(Math.Round(tyre2.RevsPerKm() - tyre1.RevsPerKm()));
+                }
 
                 /// <summary>
                 /// Заполнение шкалы визуального "спидометра" значениями отклонений
@@ -240,16 +271,36 @@ namespace TyreCalculator
                 labelSpeed170.Text = strDigs[16];
                 labelSpeed180.Text = strDigs[17];
                 int offset = 6;
-                int halfX = pictureBox1.Size.Width / 2, halfY = pictureBox1.Size.Height /2;
-                int radiusOfTyre = ((int)tyre1.TyreDiametr() / 2) / 2, radiusOfWheel = (int)((tyre1.WheelSize * 25.4) / 2) / 2;
-                int radiusOfTyre2 = ((int)tyre2.TyreDiametr() / 2) / 2, radiusOfWheel2 = (int)((tyre2.WheelSize * 25.4) / 2) / 2;
+                int halfX = pictureBox1.Size.Width / 2, halfY = pictureBox1.Size.Height / 2;
+                double scale;
+                int radiusOfTyre, radiusOfWheel;
+                int radiusOfTyre2, radiusOfWheel2;
                 g = pictureBox1.CreateGraphics();
-                g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfTyre, (halfY) - radiusOfTyre, (Int32)tyre1.TyreDiametr() / 2, (Int32)tyre1.TyreDiametr() / 2, 90, 180);
-                g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfWheel, (halfY) - radiusOfWheel, (Int32)(tyre1.WheelSize * 25.4) / 2, (Int32)(tyre1.WheelSize * 25.4) / 2, 90, 180);
-                g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfTyre2, (halfY) - radiusOfTyre2, (Int32)tyre2.TyreDiametr() / 2, (Int32)tyre2.TyreDiametr() / 2, 270, 180);
-                g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfWheel2, (halfY) - radiusOfWheel2, (Int32)(tyre2.WheelSize * 25.4) / 2, (Int32)(tyre2.WheelSize * 25.4) / 2, 270, 180);
+                if (tyre1.TyreDiametr() >= 500 || tyre2.TyreDiametr() >= 500)
+                {
+                    scale = 2.7;
+                    radiusOfTyre = (int)((tyre1.TyreDiametr() / 2) / scale);
+                    radiusOfWheel = (int)(((tyre1.WheelSize * 25.4) / 2) / scale);
+                    radiusOfTyre2 = (int)((tyre2.TyreDiametr() / 2) / scale);
+                    radiusOfWheel2 = (int)(((tyre2.WheelSize * 25.4) / 2) / scale);
+                    g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfTyre, (halfY) - radiusOfTyre, (Int32)(tyre1.TyreDiametr() / scale), (Int32)(tyre1.TyreDiametr() / scale), 90, 180);
+                    g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfWheel, (halfY) - radiusOfWheel, (Int32)((tyre1.WheelSize * 25.4) / scale), (Int32)((tyre1.WheelSize * 25.4) / scale), 90, 180);
+                    g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfTyre2, (halfY) - radiusOfTyre2, (Int32)(tyre2.TyreDiametr() / scale), (Int32)(tyre2.TyreDiametr() / scale), 270, 180);
+                    g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfWheel2, (halfY) - radiusOfWheel2, (Int32)((tyre2.WheelSize * 25.4) / scale), (Int32)((tyre2.WheelSize * 25.4) / scale), 270, 180);
+                }
+                else
+                {
+                    scale = 2;
+                    radiusOfTyre = (int)((tyre1.TyreDiametr() / 2) / scale);
+                    radiusOfWheel = (int)(((tyre1.WheelSize * 25.4) / 2) / scale);
+                    radiusOfTyre2 = (int)((tyre2.TyreDiametr() / 2) / scale);
+                    radiusOfWheel2 = (int)(((tyre2.WheelSize * 25.4) / 2) / scale);
+                    g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfTyre, (halfY) - radiusOfTyre, (Int32)(tyre1.TyreDiametr() / scale), (Int32)(tyre1.TyreDiametr() / scale), 90, 180);
+                    g.DrawArc(new Pen(Brushes.Red), (halfX - offset) - radiusOfWheel, (halfY) - radiusOfWheel, (Int32)((tyre1.WheelSize * 25.4) / scale), (Int32)((tyre1.WheelSize * 25.4) / scale), 90, 180);
+                    g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfTyre2, (halfY) - radiusOfTyre2, (Int32)(tyre2.TyreDiametr() / scale), (Int32)(tyre2.TyreDiametr() / scale), 270, 180);
+                    g.DrawArc(new Pen(Brushes.Black), (halfX + offset) - radiusOfWheel2, (halfY) - radiusOfWheel2, (Int32)((tyre2.WheelSize * 25.4) / scale), (Int32)((tyre2.WheelSize * 25.4) / scale), 270, 180);
+                }
             }
-
         }
 
         private void brandComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -336,6 +387,39 @@ namespace TyreCalculator
                 }
             }
             listView2.Items.Add(new ListViewItem(values.ToArray()));
+            //foreach (XElement elem in infobrand)
+            //{
+            //    //listView2.Items[0].SubItems[0].Text = elem.Attribute("name").Value;
+            //    //listView2.Items[0].SubItems.Add(elem.Attribute("name").Value);
+            //    listView2.Items.Add(elem.Attribute("name").Value);
+            //    //textBox1.AppendText(elem.Element("model").Attribute("nick").Value + " ");
+            //    //textBox1.AppendText(elem.Element("model").Element("prod_year").Attribute("year").Value + " ");
+            //    //textBox1.AppendText(elem.Element("model").Element("prod_year").Element("engine").Value + " ");
+            //    //foreach (var elem2 in elem.Element("model").Element("prod_year")) textBox1.AppendText(elem.Element("model").Element("prod_year").Element("tyre_sizes").Value + " ");
+            //}
+            //foreach (XElement elem in infomodel)
+            //{
+            //    //listView2.Items[0].SubItems[1].Text = elem.Attribute("nick").Value;
+            //    listView2.Items[0].SubItems.Add(elem.Attribute("nick").Value);
+            //    //listView2.ite
+            //    //listView2.Items.Add(elem.Attribute("nick").Value);
+            //}
+            //foreach (XElement elem in infoyear)
+            //{
+            //    //listView2.Items[0].SubItems[2].Text = elem.Attribute("year").Value;
+            //    //listView2.Items[0].SubItems[3].Text = elem.Element("engine").Value;
+            //    listView2.Items[0].SubItems.Add(elem.Attribute("year").Value);
+            //    listView2.Items[0].SubItems.Add(elem.Attribute("year").Value);
+            //    //listView2.Items.Add(elem.Attribute("year").Value);
+            //    //listView2.Items.Add(elem.Element("engine").Value);
+            //    //listView2.Items.Add(elem.Element("tyre_sizes").Value);
+            //    //listView2.Items[0].SubItems[4].Text = elem.Element("tyre_sizes").Value;
+            //    foreach (XElement elem2 in elem.Elements("tyre_sizes"))
+            //    {
+            //        //listView2.Items.Add(elem2.Value);
+            //        listView2.Items[0].SubItems.Add(elem2.Value);
+            //    }
+            //}
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -367,6 +451,7 @@ namespace TyreCalculator
         private void dictionarySetStripMenuItem_Click(object sender, EventArgs e)
         {
             DicEditorTree dicEditorTree = new DicEditorTree();
+            dicEditorTree.Owner = this;
             dicEditorTree.Show();
         }
 
